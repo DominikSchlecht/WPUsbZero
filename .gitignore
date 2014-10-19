@@ -8,4 +8,5 @@
 *.dvi
 *.glo
 *.idx
-
+*.out
+*.pdf
