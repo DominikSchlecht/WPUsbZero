@@ -1,0 +1,11 @@
+#Ignore the changing HTML-Snippets
+*.aux
+*.bbl
+*.blg
+*.log
+*.synctex.gz
+*.toc
+*.dvi
+*.glo
+*.idx
+
