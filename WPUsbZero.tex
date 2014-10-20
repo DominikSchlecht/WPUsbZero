@@ -154,6 +154,8 @@
 			chapter/title_page,%
 			chapter/thanks_statement,
             chapter/einleitung,
+            chapter/USB,
+            chapter/UmgehenUSBPolicies,
 			chapter/appendix%
 		}
 
@@ -190,37 +192,16 @@
                 \cleardoublepage
                 
 			\chapter{Motivation}
-Bei einer Prüfung interner Regularien bei der Informationssicherheit wurde das Thema USB-Geräte in Verbindung mit Thin oder auch sogenannten Zero-Clients aufgegriffen. Hier soll aus gegeben fachlichen Anlässen eine Möglichkeit geschaffen werden lokale USB-Geräte, wie z.B. USB-Sticks oder USB-CD-Laufwerke, an die virtuelle Maschine des Benutzers durch zu stellen. Hier galt es das Risiko zu Prüfen und entsprechende Gegenmaßnahmen zu entwicklen. Würde man das Durchstellen von USB-Geräten jedoch im Allgemeinen erlauben, so würden sich erheblich Gefahren ergeben, welche unter \ref{AllgGefBeiUSB} erläutert werden. Um dem Vorzubeigen, soll auf Basis einer Policie, welche in \ref{Policies} weiter erläutert werden, das Durchstellen auf bestimmte Geräte begrenzt werden. Dies geschieht im normalfall über die Filterung nach PID und VID, welche eine Produkt, z.B. einen bestimmten USB-Stick, eindeutig Identifiezieren sollten. Diese Felder werden unter \ref{FelderUSB} weiter erläutert. Bei der durchgeführten Sicherheitsprüfung stellte sich jedoch heraus, dass diese Filterung durch die Fälschung der PID und VID leicht gefälscht werden können. Der Angriff, \ref{Angriff}, soll in diesem Dokument erläuter und Aufgezeigt werden. Den Proof-Of-Concept finden Sie untern \ref{PoC}.
-		
-			\chapter{Allgemeine Gefahren bei USB}\label{AllgGefBeiUSB}
-USB-Geräte stellen Gefahren auf verschiedenen Ebenen dar. Zum einen werden USB-Sticks, zumindest in dem Szenario, das hier betrachtet wurde, von Dritten an Mitarbeiter gegeben. Das heist, dass der Dritte, insofern dieser die nötige kriminielle Energie aufweist, ein prepariertes Gerät einschicken könnte. Erschwerend kommt hinzu, dass der Mitarbeiter keine Möglichkeit hat, ein böses USB-Gerät von einem normalen zu unterscheiden. Auch besteht die Möglichkeit für den Dritten den Angriff über längerere Zeit vorzubereiten, da kein Zeitdruck besteht, im Gegenteil, USB-Geräte sind gerade noch im Aufwärtstrend. TODO CD vs USB Statistik. Bei der Manipulation sind verschiedene Szenarien denkbar. Einige sind in den nächsten Sektionen aufgeführt.
+Bei einer Prüfung interner Regularien bei der Informationssicherheit wurde das Thema USB-Geräte in Verbindung mit Thin oder auch sogenannten Zero-Clients aufgegriffen. Hier soll aus gegeben fachlichen Anlässen eine Möglichkeit geschaffen werden lokale USB-Geräte, wie z.B. USB-Sticks oder USB-CD-Laufwerke, an die virtuelle Maschine des Benutzers durch zu stellen. Hier galt es das Risiko zu Prüfen und entsprechende Gegenmaßnahmen zu entwicklen. Würde man das Durchstellen von USB-Geräten jedoch im Allgemeinen erlauben, so würden sich erheblich Gefahren ergeben, welche unter \ref{GefBeiUSB} erläutert werden. Um dem Vorzubeigen, soll auf Basis einer Policie, welche in \ref{Policies} weiter erläutert werden, das Durchstellen auf bestimmte Geräte begrenzt werden. Dies geschieht im normalfall über die Filterung nach PID und VID, welche eine Produkt, z.B. einen bestimmten USB-Stick, eindeutig Identifiezieren sollten. Diese Felder werden unter \ref{FelderUSB} weiter erläutert. Bei der durchgeführten Sicherheitsprüfung stellte sich jedoch heraus, dass diese Filterung durch die Fälschung der PID und VID leicht gefälscht werden können. Der Angriff, \ref{Angriff}, soll in diesem Dokument erläuter und Aufgezeigt werden. Den Proof-Of-Concept finden Sie untern \ref{PoC}.
 
-			\section{Viren}
-Viren sind eine wachsende Bedrohung in der heutigen Zeit. Vor einigen Jahren waren einige wenige Virenfamilien weit verbreitet. So konnten Virenhersteller über signaturbasierte Suchalgorithmen nach bekannten Mustern suchen und Viren identifizieren. In den letzten Jahren zeichnet sich jedoch der Trend ab, dass Viren sich schneller weiterentwickeln und zudem oft polymorph programmiert sind, also ihr aussehen bei einer Infektion verändern. Dadurch werden signaturbasierte Erkennungen immer uneffizienter und die Gefahr, dass ein Rechner unerkannt Infiziert wird, steigt. Eine Infektion passiert zumeist über sogenannte Browserexploits, also preparierte Webseiten, welche Lücken in der Software des Users nutzten, oder durch E-Mails verbreitet. In dem von uns betrachteten Szenario würde ein krimineller Dritter oder aber auch ein unwissinder Dritter, dessen Rechner von einem Virus infiziert ist, einen USB-Stick mit einem Virus einschicken. Dabei wird im folgenden zwischen Viren im ursprünglichen Sinn und Viren, welche sich auf der Treiberebene einnissten, unterschieden.
-
-			\subsection{Normale Viren}
-			\subsection{Viren auf Treiberebene und neue Möglichkeiten durch Virtualisierungsumgebungen}
-
-			\section{Dateneinschleußung}
-
+			\include{chapter/USB}
 			
-			\section{Datenabfluss}
-Neben den Gefahren von außen müssen jedoch auch sogenannte \glqq Inside-Threaths\grqq beachtet werden. Dies wären Mitarbeiter, welche z.B. interne IT-Systeme manipulieren, um sich Vorteile oder Reichtümer zu verschaffen. Das wohl bekannteste Beispiel wäre hier wohl ein TODO Kevin Midnick Geschichte. Bezogen auf USB wäre ein Risiko der Abfluss von Daten, also wenn ein Mitarbeiter Daten auf einem USB-Stick speichert und diese mit nach Hause nimmt, um diese zu Verkaufen oder sich zu bereichern. Denkbar wären zum Beispiel Kundendaten, bei Admins Passwörter, Geschäftsberichte oder sonstige Unternehmensgeheimnisse. Diese können oft für Geld in einschlägigen Bereichen des Internets verkauft oder bei Geschäftsberichten zur Manipulation am Finanzmarkt genutzt werden. Auch wäre eine Abwerbung eines Mitarbeiters von einem anderen Unternehmen für Industriespionage denkbar.
-Eine neue Bedrohung sind Geheimdienste, welche Personen in eine Unternehmen einschleußen oder Mitarbeiter abwerben, um Daten übe die Kunden zu sammeln. Dies wurde erst letztens durch von Edward Snowden veröffentlichte Dokumente publik. TODO Quelle
-
+			
 			\chapter{Policies} \label{Policies}
 Policies sind Regelwerke, welche in IT-Systemen, aber auch als interne Regelungen in Unternehmen zum Einsatz kommen. TODO
-						
-			
-			\chapter{Felder bei USB} \label{FelderUSB}
-			\section{Allgemein}
-			\section{PID}
-			\section{VID}
-			
-			\chapter{Umgehung der Policies}\label{Angriff}
-			\section{Teensy}
-			\section{Vorgehen}
-			\section{Proof of Concept} \label{PoC}
+
+
+			\include{chapter/UmgehenUSBPolicies}
 
 			\chapter{Ausblick in die Zukunft}			
 			
