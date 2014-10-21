@@ -21,8 +21,39 @@ Eine neue Bedrohung sind Geheimdienste, welche Personen in eine Unternehmen eins
 
 			\section{Technische Ablauf beim Einstecken eines USB-Devices}
 			Einstecken => Felder werden übertragen => Windows sucht nach Treiber und installiert diese
-			\section{Felder}
-			Der USB-Standart sieht Felder vor, welche allgemeine Informationen zu dem Gerät beinhalten. Diese Felder werden vom Herrsteller befüllt und vom Betriebssystem genutzt, um Treiber zu suchen oder auch die USB-Geräte gegen Policies zu prüfen. Um eigene Werte bei PID oder VID-Felder zu nutzten und damit nicht mehrere Herrsteller die selbe PID verwenden, müssen Addressbereiche bei der USB-Gruppe gekauft werden. TODO Kosten, Auflagen etc. Die Variation der Felder reicht von TODO bis zu den Feldern PID und VID, welche im folgenden weiter Erläutert werden.
+			\section{Descriptoren}
+			Der USB-Standart sieht Felder vor, welche allgemeine Informationen zu dem Gerät beinhalten. Diese Felder werden vom Herrsteller befüllt und vom Betriebssystem genutzt, um Treiber zu suchen oder auch die USB-Geräte gegen Policies zu prüfen. Um eigene Werte bei PID oder VID-Felder zu nutzten und damit nicht mehrere Herrsteller die selbe PID verwenden, müssen Addressbereiche bei der USB-Gruppe gekauft werden. TODO Kosten, Auflagen etc. Die Variation der Felder reicht von TODO bis zu den Feldern PID und VID, welche im folgenden weiter Erläutert werden. Im folgenden werden die wichtigsten erläutert.
+
+\begin{figure}[h]
+	\setlength{\unitlength}{0.14in} % selecting unit length
+	\centering % used for centering Figure
+	\begin{picture}(32,15) % picture environment with the size (dimensions)
+% 32 length units wide, and 15 units high.
+	\put(0,4){BlaBLab}
+	\put(0,0){\framebox(2,3){1}}
+	\put(2,0){\framebox(2,3){1}}
+	\put(4,0){\framebox(4,3){1}}
+	\put(8,0){\framebox(2,3){1}}
+	\put(10,0){\framebox(2,3){1}}
+	\put(12,0){\framebox(2,3){1}}
+	\put(14,0){\framebox(2,3){1}}
+	\put(16,0){\framebox(4,3){1}}
+	\put(20,0){\framebox(4,3){1}}
+	\put(24,0){\framebox(4,3){1}}
+	\put(28,0){\framebox(2,3){1}}
+	\put(30,0){\framebox(2,3){1}}
+	\put(32,0){\framebox(2,3){1}}
+	\put(34,0){\framebox(2,3){1}}
+	\put(23,4){\framebox(6,3){$H_{C}(q)$}}
+	\put(0,5.5){\vector(1,0){3}}
+	\put(19.5,6.5) {$x_{C}(k)$}
+\end{picture}
+\caption{Aufbau der USB-Descriptoren}
+% title of the Figure
+\label{fig:lnlblock}
+% label to refer figure in text
+\end{figure}			
+			
 			\subsection{PID}
 			Das Feld PID steht für Produkt \glqq Identifier\grqq und beschreibt den Herrsteller des Geräts. TODO Tabelle
 			\subsection{VID}
