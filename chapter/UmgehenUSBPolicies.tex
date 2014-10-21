@@ -1,25 +1,31 @@
 \chapter{Umgehung der USB-Policies}\label{Angriff}
-			\section{Wie wird gefiltert}
-Die Angreifbaren USB-Policies werden über Felder definiert. Wollten wir etwa ein Gerät mit PID=0x01 und VID=0x02 freigeben aber alle sonstigen Geräte abweisen, so wäre folgende Regel möglich:
+
+\section{Wie wird gefiltert}
+Die Angreifbaren USB-Policies werden über Felder definiert. Wollten wir etwa ein Gerät mit idProduct=0x01 und idVendor=0x02 freigeben aber alle sonstigen Geräte abweisen, so wäre folgende Regel möglich:
 			\begin{itemize}
 				\item Verbiete alle USB-Geräte
 				\item Erlaube USB-Geräte mit
-					\subitem PID=0x01
-					\subitem VID=0x02
+				\begin{itemize}
+					\item idProduct=0x01
+					\item idVendor=0x02
+				\end{itemize}
 			\end{itemize}
-Die Regeln liest man von oben nach unten, wobei spätere Regeln frühere überschreiben. Hier würden also zuerst alle USB-Geräte blockiert werden, außer das Gerät besitzt die PID=0x01 und VID=0x02. Dies scheint logisch, hat ein Gerät z.B. die PID=0x03, so tritt die \glqq Erlaube\grqq-Regel nicht in Kraft und es bleibt die \glqq Verbiete\grqq-Regel bestehen. Meldet sich ein Gerät mit PID=0x01 und VID=0x02 an, so gilt zwar auch zunächst die \glqq Verbiete\grqq-Regel, jedoch trifft die \glqq Erlaube\grqq-Regel zu und überschreibt die \glqq Verbiete\grqq-Regel, sodass der Zugriff gewährt wird.
-Diese Zugriffe können gegebenenfalls noch um eine Active-Direktory-Gruppe erweitert werden. Dies ist vor allem nützlich, wenn man nur bestimmten Benutzern Zugriff geben will. Wollten wir z.B. dem Benutzer \glqq Alice\grqq den Zugriff auf ein USB-Gerät mit der PID=0x01 und der VID=0x02 geben, so wöre die Regel:
+Die Regeln liest man von oben nach unten, wobei spätere Regeln frühere überschreiben. Hier würden also zuerst alle USB-Geräte blockiert werden, außer das Gerät besitzt die idProduct=0x01 und idVendor=0x02. Dies scheint logisch, hat ein Gerät z.B. die idProduct=0x03, so tritt die \glqq Erlaube\grqq-Regel nicht in Kraft und es bleibt die \glqq Verbiete\grqq-Regel bestehen. Meldet sich ein Gerät mit idProduct=0x01 und idVendor=0x02 an, so gilt zwar auch zunächst die \glqq Verbiete\grqq-Regel, jedoch trifft die \glqq Erlaube\grqq-Regel zu und überschreibt die \glqq Verbiete\grqq-Regel, sodass der Zugriff gewährt wird.
+Diese Zugriffe können gegebenenfalls noch um eine Active-Direktory-Gruppe erweitert werden. Dies ist vor allem nützlich, wenn man nur bestimmten Benutzern Zugriff geben will. Wollten wir z.B. dem Benutzer \glqq Alice\grqq den Zugriff auf ein USB-Gerät mit der idProduct=0x01 und der idVendor=0x02 geben, so wöre die Regel:
 			\begin{itemize}
 				\item Verbiete alle USB-Geräte
 				\item Ist User=\glqq Alice\grqq
 				\item Erlaube USB-Geräte mit
-					\subitem PID=0x01
-					\subitem VID=0x02
+				\begin{itemize}
+					\item idProduct=0x01
+					\item idVendor=0x02
+				\end{itemize} 
 			\end{itemize}
-			\section{Teensy}
-			Das Teensy ist ein Platine bestehend aus einem 72 MHz MK20DX256VLH7 Cortex-M4 Prozessor, 256 kbytes Flash Speicher und 64 kbytes RAM. Zudem verfügt es über eine USB-Schnittstelle, mit welcher man frei verfahren kann. Man kann also ein Programm auf dem Teensy ablegen und dieses wird ausgeführt, wenn man den USB-Stick einsteckt. So kann man beliebige Signalfolgen über USB an ein anderes Gerät schicken.
+
+\section{Teensy}
+Das Teensy ist ein Platine bestehend aus einem 72 MHz MK20DX256VLH7 Cortex-M4 Prozessor, 256 kbytes Flash Speicher und 64 kbytes RAM. Zudem verfügt es über eine USB-Schnittstelle, mit welcher man frei verfahren kann. Man kann also ein Programm auf dem Teensy ablegen und dieses wird ausgeführt, wenn man den USB-Stick einsteckt. So kann man beliebige Signalfolgen über USB an ein anderes Gerät schicken.
 			
-			\section{Vorgehen}
+\section{Vorgehen}
 Da die USB-Felder nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind, sollte es Möglich sein, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige PIDs und VIDs emuliert. Beschränkt eine USB-Policie den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen.
 
-			\section{Proof of Concept} \label{PoC}
+\section{Proof of Concept} \label{PoC}
