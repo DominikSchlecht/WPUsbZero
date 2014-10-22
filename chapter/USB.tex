@@ -1,5 +1,6 @@
 \chapter{USB}
 USB ist eine Schnittstelle, welche so gut wie alle mordernen Rechner bsitzten. Es ist unter anderem Möglich darüber Geräte wie Kopfhörer, Joysticks aber auch Wechseldatenträger an zu schließen. Im letzteren Bereich ersetzt USB die bisher vorherschende CD/DVD-Technologier, da auf einem USB Stick mehr Daten in höherer Geschwindigkeit gespeichert werden können.
+
 \section{Gefahren bei USB}\label{GefBeiUSB}
 USB-Geräte stellen Gefahren auf verschiedenen Ebenen dar. Zum einen werden USB-Sticks, zumindest in dem Szenario, das hier betrachtet wurde, von Dritten an Mitarbeiter gegeben. Das heist, dass der Dritte, insofern dieser die nötige kriminielle Energie aufweist, ein prepariertes Gerät einschicken könnte. Erschwerend kommt hinzu, dass der Mitarbeiter keine Möglichkeit hat, ein böses USB-Gerät von einem normalen zu unterscheiden. Auch besteht die Möglichkeit für den Dritten den Angriff über längerere Zeit vorzubereiten, da kein Zeitdruck besteht, im Gegenteil, USB-Geräte sind gerade noch im Aufwärtstrend. TODO CD vs USB Statistik. Bei der Manipulation sind verschiedene Szenarien denkbar. Einige sind in den nächsten Sektionen aufgeführt.
 
@@ -22,7 +23,7 @@ Eine neue Bedrohung sind Geheimdienste, welche Personen in eine Unternehmen eins
 \section{Technische Ablauf beim Einstecken eines USB-Devices}
 Einstecken => Felder werden übertragen => Windows sucht nach Treiber und installiert diese
 
-\section{Descriptoren}
+\section{Descriptoren}\label{descriptoren}
 Der USB-Specifikation, welche von dem USB Implementers Forum, Inc.\footnote{http://www.usb.org/about} festgelegt wird, sieht Felder vor, welche Informationen zu dem Gerät beinhalten.
 \begin{wrapfigure}{l}{0pt}%{0.5\textwidth}
 \begin{tikzpicture}[scale=1]
