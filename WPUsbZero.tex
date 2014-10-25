@@ -17,6 +17,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{mathtools}
 
 \usepackage{listings}
 
@@ -159,7 +160,9 @@
             chapter/einleitung,
             chapter/szenario,
             chapter/USB,
+            chapter/policie,
             chapter/UmgehenUSBPolicies,
+            chapter/FazitGegenmassnahmen,
 			chapter/appendix%
 		}
 
@@ -200,15 +203,12 @@
 			\include{chapter/USB}
 			
 			
-			\chapter{Policies} \label{Policies}
-Policies sind Regelwerke, welche in IT-Systemen, aber auch als interne Regelungen in Unternehmen zum Einsatz kommen. TODO
+			\include{chapter/policie}
 
 
 			\include{chapter/UmgehenUSBPolicies}
 
-			\chapter{Ausblick in die Zukunft}			
-			
-			\chapter{Gegenmaßnahmen}
+			\include{chapter/FazitGegenmassnahmen}
 	
 			
 %------------------------------------------------------------------------
