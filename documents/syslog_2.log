@@ -1,0 +1,26 @@
+Oct 26 20:45:29 kali kernel: [12206.909477] input: Teensyduino Keyboard/Mouse/Joystick as /devices/pci0000:00/0000:00:1d.0/usb3/3-1/3-1:1.0/0003:BEEF:BEEF.0019/input/input37
+Oct 26 20:45:29 kali kernel: [12206.909728] hid-generic 0003:BEEF:BEEF.0019: input,hidraw0: USB HID v1.11 Keyboard [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input0
+Oct 26 20:45:29 kali kernel: [12206.916364] input: Teensyduino Keyboard/Mouse/Joystick as /devices/pci0000:00/0000:00:1d.0/usb3/3-1/3-1:1.1/0003:BEEF:BEEF.001A/input/input38
+Oct 26 20:45:29 kali kernel: [12206.916768] hid-generic 0003:BEEF:BEEF.001A: input,hidraw1: USB HID v1.11 Mouse [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input1
+Oct 26 20:45:29 kali kernel: [12206.922350] hid-generic 0003:BEEF:BEEF.001B: hidraw2: USB HID v1.11 Device [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input2
+Oct 26 20:45:29 kali kernel: [12206.928380] input: Teensyduino Keyboard/Mouse/Joystick as /devices/pci0000:00/0000:00:1d.0/usb3/3-1/3-1:1.3/0003:BEEF:BEEF.001C/input/input39
+Oct 26 20:45:29 kali kernel: [12206.928718] hid-generic 0003:BEEF:BEEF.001C: input,hidraw3: USB HID v1.11 Joystick [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input3
+Oct 26 20:45:29 kali mtp-probe: checking bus 3, device 12: "/sys/devices/pci0000:00/0000:00:1d.0/usb3/3-1"
+Oct 26 20:45:29 kali mtp-probe: bus: 3, device: 12 was not an MTP device
+Oct 26 20:45:37 kali kernel: [12214.892341] usb 3-1: USB disconnect, device number 12
+Oct 26 20:45:46 kali kernel: [12223.536191] usb 3-1: new full-speed USB device number 13 using uhci_hcd
+Oct 26 20:45:46 kali kernel: [12223.705175] usb 3-1: New USB device found, idVendor=beef, idProduct=beef
+Oct 26 20:45:46 kali kernel: [12223.705185] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+Oct 26 20:45:46 kali kernel: [12223.705193] usb 3-1: Product: Keyboard/Mouse/Joystick
+Oct 26 20:45:46 kali kernel: [12223.705199] usb 3-1: Manufacturer: Teensyduino
+Oct 26 20:45:46 kali kernel: [12223.705205] usb 3-1: SerialNumber: 413450
+Oct 26 20:45:46 kali kernel: [12223.713431] input: Teensyduino Keyboard/Mouse/Joystick as /devices/pci0000:00/0000:00:1d.0/usb3/3-1/3-1:1.0/0003:BEEF:BEEF.001D/input/input40
+Oct 26 20:45:46 kali kernel: [12223.713679] hid-generic 0003:BEEF:BEEF.001D: input,hidraw0: USB HID v1.11 Keyboard [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input0
+Oct 26 20:45:46 kali kernel: [12223.720321] input: Teensyduino Keyboard/Mouse/Joystick as /devices/pci0000:00/0000:00:1d.0/usb3/3-1/3-1:1.1/0003:BEEF:BEEF.001E/input/input41
+Oct 26 20:45:46 kali kernel: [12223.720739] hid-generic 0003:BEEF:BEEF.001E: input,hidraw1: USB HID v1.11 Mouse [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input1
+Oct 26 20:45:46 kali kernel: [12223.726334] hid-generic 0003:BEEF:BEEF.001F: hidraw2: USB HID v1.11 Device [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input2
+Oct 26 20:45:46 kali kernel: [12223.732342] input: Teensyduino Keyboard/Mouse/Joystick as /devices/pci0000:00/0000:00:1d.0/usb3/3-1/3-1:1.3/0003:BEEF:BEEF.0020/input/input42
+Oct 26 20:45:46 kali kernel: [12223.732662] hid-generic 0003:BEEF:BEEF.0020: input,hidraw3: USB HID v1.11 Joystick [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input3
+Oct 26 20:45:46 kali mtp-probe: checking bus 3, device 13: "/sys/devices/pci0000:00/0000:00:1d.0/usb3/3-1"
+Oct 26 20:45:46 kali mtp-probe: bus: 3, device: 13 was not an MTP device
+Oct 26 20:46:01 kali dbus[2487]: [system] Failed to activate service 'org.freedesktop.Avahi': timed out
