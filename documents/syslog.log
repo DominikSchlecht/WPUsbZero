@@ -1,13 +1,4 @@
-Oct 26 20:44:11 kali kernel: [12128.132266] usb 3-1: Manufacturer: Teensyduino
-Oct 26 20:44:11 kali kernel: [12128.132272] usb 3-1: SerialNumber: 413450
-Oct 26 20:44:11 kali kernel: [12128.139500] input: Teensyduino Keyboard/Mouse/Joystick as /devices/pci0000:00/0000:00:1d.0/usb3/3-1/3-1:1.0/0003:16C0:0482.000B/input/input28
-Oct 26 20:44:11 kali kernel: [12128.139745] hid-generic 0003:16C0:0482.000B: input,hidraw0: USB HID v1.11 Keyboard [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input0
-Oct 26 20:44:11 kali kernel: [12128.145321] input: Teensyduino Keyboard/Mouse/Joystick as /devices/pci0000:00/0000:00:1d.0/usb3/3-1/3-1:1.1/0003:16C0:0482.000C/input/input29
-Oct 26 20:44:11 kali kernel: [12128.145595] hid-generic 0003:16C0:0482.000C: input,hidraw1: USB HID v1.11 Mouse [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input1
-Oct 26 20:44:11 kali kernel: [12128.151326] hid-generic 0003:16C0:0482.000D: hidraw2: USB HID v1.11 Device [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input2
-Oct 26 20:44:11 kali kernel: [12128.157390] input: Teensyduino Keyboard/Mouse/Joystick as /devices/pci0000:00/0000:00:1d.0/usb3/3-1/3-1:1.3/0003:16C0:0482.000E/input/input30
-Oct 26 20:44:11 kali kernel: [12128.157724] hid-generic 0003:16C0:0482.000E: input,hidraw3: USB HID v1.11 Joystick [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input3
-Oct 26 20:44:17 kali kernel: [12134.788222] usb 3-1: USB disconnect, device number 7
+[...]
 Oct 26 20:44:26 kali kernel: [12143.520149] usb 3-1: new full-speed USB device number 8 using uhci_hcd
 Oct 26 20:44:26 kali kernel: [12143.689151] usb 3-1: New USB device found, idVendor=16c0, idProduct=0482
 Oct 26 20:44:26 kali kernel: [12143.689155] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
@@ -21,3 +12,4 @@ Oct 26 20:44:26 kali kernel: [12143.702411] hid-generic 0003:16C0:0482.0010: inp
 Oct 26 20:44:26 kali kernel: [12143.708320] hid-generic 0003:16C0:0482.0011: hidraw2: USB HID v1.11 Device [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input2
 Oct 26 20:44:26 kali kernel: [12143.714319] input: Teensyduino Keyboard/Mouse/Joystick as /devices/pci0000:00/0000:00:1d.0/usb3/3-1/3-1:1.3/0003:16C0:0482.0012/input/input33
 Oct 26 20:44:26 kali kernel: [12143.714650] hid-generic 0003:16C0:0482.0012: input,hidraw3: USB HID v1.11 Joystick [Teensyduino Keyboard/Mouse/Joystick] on usb-0000:00:1d.0-1/input3
+[...]
