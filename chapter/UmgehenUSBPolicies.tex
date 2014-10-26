@@ -14,7 +14,7 @@ Die Regeln werden von oben nach unten gelesen, wobei spätere Regeln frühere ü
 Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Gruppe} erweitert werden. Dies ist vor allem nützlich, wenn man nur bestimmten Benutzern die Möglichkeit geben will, auf USB-Geräte zu zu greifen. Wollten wir z.B. dem Benutzer \glqq Alice\grqq den Zugriff auf ein USB-Gerät mit der $idProduct=0x01$ und der $idVendor=0x02$ geben, so wäre die Regel:
 			\begin{itemize}
 				\item Verbiete alle USB-Geräte
-				\item Ist User=\glqq Alice\grqq
+				\item Ist $User=Alice$
 				\item Erlaube USB-Geräte mit
 				\begin{itemize}
 					\item $idProduct=0x01$
@@ -23,9 +23,9 @@ Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Grup
 			\end{itemize}
 
 \section{Teensy}
-Das Teensy ist ein Platine bestehend aus einem 72 MHz MK20DX256VLH7 Cortex-M4 Prozessor, 256 kbytes Flash Speicher und 64 kbytes RAM. Zudem verfügt es über eine USB-Schnittstelle, mit welcher man frei verfahren kann. Man kann also ein Programm auf dem Teensy ablegen und dieses wird ausgeführt, wenn man den USB-Stick einsteckt. So kann man beliebige Signalfolgen über USB an ein anderes Gerät schicken.
+Das Teensy ist ein Platine bestehend aus einem 72 MHz MK20DX256VLH7 Cortex-M4 Prozessor, 256 kbytes Flash Speicher und 64 kbytes RAM. Zudem verfügt es über eine USB-Schnittstelle. Man kann also ein Programm auf dem Teensy ablegen und dieses wird ausgeführt, wenn man den USB-Stick einsteckt. So kann man beliebige Signalfolgen über USB an ein anderes Gerät schicken.
 			
 \section{Vorgehen}
-Da die USB-Felder nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind, sollte es Möglich sein, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige \textit{idProduct}- und \textit{idVendor}-Werte emuliert. Beschränkt eine USB-Policie den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen.
+Da die USB-Felder nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind, sollte es möglich sein, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige \textit{idProduct}- und \textit{idVendor}-Werte emuliert. Beschränkt eine USB-Policie den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen.
 
 \section{Proof of Concept} \label{PoC}

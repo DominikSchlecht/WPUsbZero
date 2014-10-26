@@ -1,8 +1,7 @@
 			\chapter{Szenario}
-Bei einer Prüfung interner Regularien bei der Informationssicherheit wurde das Thema USB-Geräte in Verbindung mit Thin oder auch sogenannten Zero-Clients aufgegriffen. Hier soll aus gegeben fachlichen Anlässen eine Möglichkeit geschaffen werden, lokale USB-Geräte, wie z.B. USB-Sticks oder USB-CD-Laufwerke, an die virtuelle Maschine des Benutzers durch zu stellen. Hier galt es das Risiko zu Prüfen und entsprechende Gegenmaßnahmen zu entwickeln. 
-Würde man das Durchstellen von USB-Geräten jedoch im Allgemeinen erlauben, so würden sich erheblich Gefahren ergeben, welche unter \ref{GefBeiUSB} erläutert werden. Um dem Vorzubeugen, soll auf Basis einer Policie, welche in \ref{Policies} weiter erläutert werden, das Durchstellen auf bestimmte Geräte begrenzt werden. Dies geschieht bei dem hier getesteten Produkt über die Filterung nach USB-Deskriptoren wie \textit{idVendor} und \textit{idProduct}, welche ein USB-Device, z.B. einen bestimmten USB-Stick oder ein USB-CD-Laufwerk, eindeutig Identifizieren sollen. Diese Felder werden unter \ref{Deskriptoren} weiter erläutert.
-In einem ersten Schritt wurde der unter \ref{fig:Ablauf} dargestellte Ablauf in Erfahrung gebracht.
-Bei der durchgeführten Sicherheitsprüfung stellte sich jedoch heraus, dass USB-Deskriptoren keinen Sicherung unterliegen und somit mit bestimmten Geräten gezielt Emuliert werden können. Diese Umgehung der Policie, \ref{Angriff}, soll in diesem Dokument erläutert und aufgezeigt werden. Den Proof-Of-Concept finden Sie untern \ref{PoC}.
+Bei einer Prüfung interner Regularien bei der Informationssicherheit wurde das Thema USB-Geräte in Verbindung mit Thin oder auch sogenannten Zero-Clients aufgegriffen. Hier soll aus gegeben fachlichen Anlässen eine Möglichkeit geschaffen werden, lokale USB-Geräte, wie z.B. USB-Sticks oder USB-CD-Laufwerke, an die virtuelle Maschine des Benutzers weiter zu leiten. Hier galt es das Risiko zu prüfen und entsprechende Gegenmaßnahmen zu entwickeln. 
+Würde man das Durchstellen von USB-Geräten im Allgemeinen erlauben, so würden sich erheblich Gefahren ergeben, welche unter \ref{GefBeiUSB} erläutert werden. Um dem vorzubeugen, soll auf Basis einer Policie, welche in \ref{Policies} weiter erläutert werden, das Durchstellen auf bestimmte Geräte begrenzt werden. Dies geschieht bei dem hier getesteten Produkt über die Filterung nach USB-Deskriptoren wie \textit{idVendor} und \textit{idProduct}, welche ein USB-Device, z.B. einen bestimmten USB-Stick oder ein USB-CD-Laufwerk, eindeutig identifizieren sollen. Diese Felder werden unter \ref{Deskriptoren} weiter erläutert.
+Bei der durchgeführten Sicherheitsprüfung stellte sich jedoch heraus, dass USB-Deskriptoren keinen Sicherung unterliegen und somit mit bestimmten Geräten gezielt Emuliert werden können. Diese Umgehung der Policie soll in diesem Dokument erläutert und aufgezeigt werden. Den Proof-Of-Concept finden Sie unter \ref{PoC}.
 
 \begin{figure}[htbp]
 \begin{tikzpicture}[
@@ -97,8 +96,8 @@ Bei der durchgeführten Sicherheitsprüfung stellte sich jedoch heraus, dass USB
 	\item[Schritt 1: ] Ein USB-Gerät wird angesteckt.
 	\item[Schritt 2: ] Der USB-Treiber des Thinclients bindet das Gerät ein. TODO Prüfen was übertragen wird
 	\item[Schritt 3: ] Der Thinclient leitet entsprechende Deskriptor-Felder an den Hypervisor weiter.
-	\item[Schritt 4: ] Der Hypervisor prüft die Deskriptor-Felder gegen die Hypervisor-Policie. Diese erlaubt entweder das Durchstellen oder Verbietet es. Wird die Durchstellung verboten, wird der USB-Stick nicht durch gestellt und damit würde der Ablauf enden. Im Folgenden wird angenommen, dass der USB-Stick durch gestellt wird.
+	\item[Schritt 4: ] Der Hypervisor prüft die Deskriptor-Felder gegen die Hypervisor-Policie. Diese erlaubt entweder das Durchstellen oder verbietet es. Wird die Durchstellung verboten, wird der USB-Stick nicht an die Hypervisor-Umgebung weitergeleitet und damit würde der Ablauf enden. Im Folgenden wird angenommen, dass der USB-Stick weitergeleitet wird.
 	\item[Schritt 5\&6: ] Der Hypervisor fordert den USB-Stick beim Thinclient an und bindet diesen ein.
 	\item[Schritt 7: ] Der Hypervisor gibt das USB-Device an die VM weiter.
-	\item[Schritt 8: ] Die VM prüft das USB-Device anhand der Deskriptor-Felder gegen die VM-Policie und stellt diesen bindet diesen entweder ein oder lehnt diesen ab.
+	\item[Schritt 8: ] Die VM prüft das USB-Device anhand der Deskriptor-Felder gegen die VM-Policie und bindet diesen entweder ein oder lehnt diesen ab.
 \end{description}
