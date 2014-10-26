@@ -25,8 +25,8 @@ Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Grup
 \section{Teensy}
 Das Teensy ist ein Platine bestehend aus einem 72 MHz MK20DX256VLH7 Cortex-M4 Prozessor, 256 kbytes Flash Speicher und 64 kbytes RAM. Zudem verfügt es über eine USB-Schnittstelle. Man kann also ein Programm auf dem Teensy ablegen und dieses wird ausgeführt, wenn man den USB-Stick einsteckt. So kann man beliebige Signalfolgen über USB an ein anderes Gerät schicken.
 			
-\section{Vorgehen}
-Da die USB-Felder nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind, sollte es möglich sein, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige \textit{idProduct}- und \textit{idVendor}-Werte emuliert. Beschränkt eine USB-Policie den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen. 
+\section{Concept}
+Da die USB-Felder nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind, sollte es möglich sein, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige \textit{idProduct}- und \textit{idVendor}-Werte emuliert. Beschränkt eine USB-Policie den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen.
 Um dies umzusetzen wurden verwendet:
 
 \begin{itemize}
@@ -59,28 +59,26 @@ Zur Analyse, mit welchen idVendor und idProduct-Werten sich der Teensy meldet, w
     idVendor,
     idProduct
   },
-  otherkeywords={=0482, 0482, =16c0, 16C0, =beef, BEEF},
   sensitive=false, % keywords are not case-sensitive
   %alsodigit={0482},
   morecomment=[l]{//}, % l is for line comment
   morecomment=[s]{/*}{*/}, % s is for start and end delimiter
   morestring=[b]" % defines that strings are enclosed in double quotes
 }
+
 \lstset{language=log}
-
-
-
-\lstinputlisting[caption={tail -f syslog output}]{documents/syslog.log}
+\lstinputlisting[caption={tail -f syslog output},otherkeywords={=0482, 0482, =16c0, 16C0}]{documents/syslog.log}
 
 Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \textit{idProduct} gleich \textit{0482} sind farblich hervorgehoben. Nun bearbeitet man die usb-desc.h, welche die notwendigen Informationen bei einer Neubeschreibung des Teensy bereit hält. Der relevante Abschnitt sowie die zu ändernden Werte sind wieder farblich hinterlegt.
 
-%\lstinputlisting[caption={usb_desc.h}]{documents/usb_desc.h}
+\lstset{language=C}
+\lstinputlisting[caption={usb\_desc.h},linerange={112-130},language=c]{documents/usb_desc.h}
 
 Ändert man hier die markierten Werte und beschreibt den Teensy mittels der Arduino-Software neu, so werden diese Deskriptoren verwendet. Das Programm ist dabei entbehrlich, hier wurde eine an den Teensy 3.1 angepasste Version des \textit{Blink}-Programms verwendet, welches im Anhang abgelegt ist. Kompiliert man das Programm nun und lädt es auf den Teensy, ergibt der \glqq tail -f /var/log/syslog\grqq -Befehl folgenden Output:
 
-\lstinputlisting[caption={tail -f syslog output 2}]{documents/syslog_2.log}
+\lstset{language=log}
+\lstinputlisting[caption={tail -f syslog output 2}, otherkeywords={=beef, BEEF}]{documents/syslog_2.log}
 
 Wie man den farblich hervorgehoben Stellen sehen kann, meldet sich der Teensy nun mit geänderten Deskriptoren.
-
 
 \section{Proof of Concept} \label{PoC}
