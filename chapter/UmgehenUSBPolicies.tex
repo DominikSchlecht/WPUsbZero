@@ -26,6 +26,14 @@ Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Grup
 Das Teensy ist ein Platine bestehend aus einem 72 MHz MK20DX256VLH7 Cortex-M4 Prozessor, 256 kbytes Flash Speicher und 64 kbytes RAM. Zudem verfügt es über eine USB-Schnittstelle. Man kann also ein Programm auf dem Teensy ablegen und dieses wird ausgeführt, wenn man den USB-Stick einsteckt. So kann man beliebige Signalfolgen über USB an ein anderes Gerät schicken.
 			
 \section{Vorgehen}
-Da die USB-Felder nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind, sollte es möglich sein, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige \textit{idProduct}- und \textit{idVendor}-Werte emuliert. Beschränkt eine USB-Policie den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen.
+Da die USB-Felder nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind, sollte es möglich sein, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige \textit{idProduct}- und \textit{idVendor}-Werte emuliert. Beschränkt eine USB-Policie den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen. 
+Um dies umzusetzen wurden verwendet:
+\begin{itemize}
+	\item Teensy 3.1 + USB-Kabel
+	\item Arduino 1.0.5 (64bit) installiert unter \textit{$\sim$/teensy/arduino-1.0.5}
+	\item Teensyduino 1.19 (64bit)
+	\item Kali-Linux als Testbetriebssystem (64bit)
+\end{itemize}
+
 
 \section{Proof of Concept} \label{PoC}
