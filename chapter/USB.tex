@@ -14,13 +14,14 @@ Eine neue Bedrohung sind Geheimdienste, welche Personen in eine Unternehmen eins
 \subsection{Exploits auf Treiberebene}
 Für den Mitarbeiter noch schwieriger zu entdecken sind Exploits auf Treiberebene. Dieses Vorgehen ist relativ neu, es werden dabei Lücken im Treiber des Geräts ausgenutzt um Schadcode auszuführen. Hierzu muss ein Benutzer einen z.B. manipulierten USB-Stick nur einstecken. Es bedarf im Gegensatz zu normalen Viren keiner weiteren Interaktion des Users, da sich der Computer automatisch mit dem USB-Device kommuniziert um die Funktionen des Geräts zu erfahren und eventuell benötigte Treiber zu installieren. Hier beginnt das Gerät jedoch bereits bestimmte schädliche Zeichenfolgen an den  Computer zu senden, welche vom Treiber interpretiert und unter Umständen einen Buffer Overflow  oder eine andere Schwachstelle ausnutzen können\footnote{https://srlabs.de/badusb/}. Durch diese Lücken kann dann auf dem Rechner des Benutzers Schadcode ausgeführt werden, ohne das dieser dies bemerkt.
 
-\section{Technische Ablauf beim Einstecken eines USB-Devices}
+%\section{Technische Ablauf beim Einstecken eines USB-Devices}
 Dieser kurze Abschnitt gibt eine genauere, jedoch immer noch oberflächlich gehaltene Beschreibung der Schritte 2., 6. und 7. der Grafik \ref{fig:Ablauf}. Wird ein USB-Gerät eingesteckt, bekommt dieser über den USB-Anschluss Strom und sendet ein Ankündigungspaket. Der Computer reagiert darauf und fordert Informationen, also die in \ref{Deskriptoren} beschriebenen Felder, an. Das USB-Gerät überträgt diese an den PC. TODO Quelle
 
+\newpage
 \section{Deskriptoren}\label{Deskriptoren}
 Der USB-Spezifikation, welche von dem USB Implementers Forum, Inc.\footnote{http://www.usb.org/about} festgelegt wird, sieht Felder vor, welche Informationen zu dem Gerät beinhalten.
 \begin{wrapfigure}{l}{0pt}%{0.5\textwidth}
-\begin{tikzpicture}[scale=1]
+\begin{tikzpicture}[scale=1, text=THIblue]
 	\draw (0,0) rectangle (0.5,0.5);
 	\draw (0.25, 0.25) node {1};
 	\draw (0.5, 0.25) node[right]{bLength};
@@ -82,7 +83,7 @@ Der USB-Spezifikation, welche von dem USB Implementers Forum, Inc.\footnote{http
 	
 	\draw (0.25, 9) node[rotate=90, right] {Bytes};
 \end{tikzpicture}
-\caption{USB-Felder}
+%\caption{USB-Felder}
 \end{wrapfigure}
 
 Dies umfasst die technische Informationen wie die Länge der gesamten Felder im \glqq bLength\grqq-Feld oder das Protokoll des Geräts im \glqq bDeviceProtocoll\grqq-Feld über Informationen für das Betriebssystem wie \glqq idVendor\grqq, \glqq idProduct\grqq, \glqq bDeviceSubClass\grqq und \glqq bDeviceClass\grqq. Diese Felder mit der jeweiligen Länge sind in der Grafik dargestellt. Ein Feld hat dabei zwischen ein und zwei Bytes. Die Felder \glqq bDeviceClass\grqq, \glqq bDeviceSubClass\grqq, \glqq bDeviceProtocol\grqq sowie \glqq idVendor\grqq werden vom Hersteller befüllt.\footnote{http://www.beyondlogic.org/usbnutshell/usb5.shtml} Das Betriebssystem nutzt die Felder meist um Treiber zu suchen oder auch das angeschlossene USB-Gerät gegen die Policie-Einstellungen zu prüfen. Um eigene Werte bei \textit{idProduct} oder \textit{idVendor}-Felder zu nutzten und damit sicher gestellt ist, dass nicht mehrere Hersteller die selbe \textit{idProduct} verwenden, müssen die Adressbereiche der \textit{idProduct} bei dem USB Implementers Forum, Inc. gekauft werden. Dazu gibt es zwei Möglichkeiten. Man kann entweder ein Mitglied der Forums werden oder für einen einmalig Betrag einen Adressraum erstehen, man darf dann jedoch nicht das offizielle USB-Logo verwenden. \footnote{http://www.usb.org/developers/vendor/} Im folgenden werden die für dieses Dokument interessanten Felder weiter erläutert:
@@ -116,7 +117,7 @@ Dies umfasst die technische Informationen wie die Länge der gesamten Felder im 
 %	\label{fig:lnlblock}
 %	% label to refer figure in text
 %\end{figure}			
-$ $\\ \\ \\ \\ \\
+$ $\\\\
 \begin{description}
 	\item[idVendor: ] Das \textit{idVendor}-Feld wird von der USB Implementers Forum, Inc. festgelegt. Das Feld ist 2 Byte lang und ein Wert ist genau einem Hersteller zugeordnet. Ersteht ein Unternehmen einen \textit{idVendor}-Wert, kann er solange er diesen \textit{idVendor}-Wert nutzt, frei über das \textit{idProduct}-Feld verfügen.
 	\item[idProduct: ] Das \textit{idProduct}-Feld wird von einem Unternehmen vergeben, welches einen Wert im idVendor-Feld gekauft hat. Es ist ebenfalls 2 Byte lang. Damit könnte ein Unternehmen bis zu $2^{16}$ verschiedene Produkte beschreiben.

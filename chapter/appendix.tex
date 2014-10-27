@@ -2,22 +2,28 @@
 %------------------------------------------------------------------------
 % Anhänge
 \appendix
-\chapter{Quellcode}
+\chapter{Appendix}
+\section{Quellcode}
 
-\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
 \lstset{% general command to set parameter(s)
-	basicstyle=\small, % print whole listing small
-	keywordstyle=\color{blue}\bfseries,% underlined boldblack keywords
-	identifierstyle=, % nothing happens
-	commentstyle=\color{green}, % white comments
-	stringstyle=\color{red}\ttfamily, % typewriter type for strings
-	showstringspaces=false, % no special string spaces
+	basicstyle=\small\ttfamily,%\small, % print whole listing small
+	keywordstyle=\color{THIblue}\bfseries,% underlined boldblack keywords
 	numbers=left,
 	numberstyle=\color{gray},
 	numbersep=5pt,
-	captionpos=t,
-	breaklines=true}
-	
-\lstset{language=Perl}
+	captionpos=t}
 
-Lorem ..
+\lstset{language=C}
+\lstinputlisting[caption={Blink\_2.ino},language=c]{documents/Blink_2.ino}
+
+\newpage
+\section{Ergänzende Grafiken}
+
+\begin{figure}[htbp]
+
+\centering
+\includegraphics[width=\textwidth]{bilder/EinstellungenArduino.png}
+\label{fig:EinstellungenArduino}
+\caption{Einstellungen Arduino}
+
+\end{figure}

@@ -69,12 +69,12 @@ Zur Analyse, mit welchen idVendor und idProduct-Werten sich der Teensy meldet, w
 \lstset{language=log}
 \lstinputlisting[caption={tail -f syslog output},otherkeywords={=0482, 0482, =16c0, 16C0}]{documents/syslog.log}
 
-Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \textit{idProduct} gleich \textit{0482} sind farblich hervorgehoben. Nun bearbeitet man die usb-desc.h, welche die notwendigen Informationen bei einer Neubeschreibung des Teensy bereit hält. Der relevante Abschnitt sowie die zu ändernden Werte sind wieder farblich hinterlegt.
+Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \textit{idProduct} gleich \textit{0482} sind farblich hervorgehoben. Nun bearbeitet man unter \textit{arduino-1.0.5/hardware/teensy/cores/teensy3/} liegende \textit{usb-desc.h}, welche die notwendigen Informationen bei einer Neubeschreibung des Teensy bereit hält. Der relevante Abschnitt sowie die zu ändernden Werte sind wieder farblich hinterlegt.
 
 \lstset{language=C}
-\lstinputlisting[caption={usb\_desc.h},linerange={112-130},language=c]{documents/usb_desc.h}
+\lstinputlisting[caption={Ausschnitt: usb\_desc.h},linerange={112-130},language=c]{documents/usb_desc.h}
 
-Ändert man hier die markierten Werte und beschreibt den Teensy mittels der Arduino-Software neu, so werden diese Deskriptoren verwendet. Das Programm ist dabei entbehrlich, hier wurde eine an den Teensy 3.1 angepasste Version des \textit{Blink}-Programms verwendet, welches im Anhang abgelegt ist. Kompiliert man das Programm nun und lädt es auf den Teensy, ergibt der \glqq tail -f /var/log/syslog\grqq -Befehl folgenden Output:
+Ändert man hier die markierten Werte und beschreibt den Teensy mittels der Arduino-Software neu, so werden diese Deskriptoren verwendet. Die Einstellungen hierfür können Sie aus der Grafik \ref{fig:EinstellungenArduino} im Anhang entnehmen. Das Programm ist dabei entbehrlich, hier wurde eine an den Teensy 3.1 angepasste Version des \textit{Blink}-Programms verwendet, welches im Anhang abgelegt ist. Kompiliert man das Programm nun und lädt es auf den Teensy, ergibt der \glqq tail -f /var/log/syslog\grqq -Befehl folgenden Output:
 
 \lstset{language=log}
 \lstinputlisting[caption={tail -f syslog output 2}, otherkeywords={=beef, BEEF}]{documents/syslog_2.log}
