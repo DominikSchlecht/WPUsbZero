@@ -11,9 +11,9 @@
 \usepackage{blindtext}
 
 \usepackage{cite}% Zitieren
+%\usepackage{biblatex}
 \usepackage{bibgerm}% Literatur in Deutscher DIN
 \usepackage{url}
-
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -76,6 +76,9 @@
 \addtokomafont{subsubsection}{\color{THIblue}}
 \setkomafont{captionlabel}{\color{THIblue}}
 
+%Url-Settings
+\renewcommand{\UrlFont}{\small\tt\color{THIblue}}
+
 %------------------------------------------------------------------
 %% Interessante optinale Packages
 %------------------------------------------------------------------
@@ -86,7 +89,7 @@
 			linkcolor=THIblue,			% Farbe der Verlinkung
 			linktocpage=true,			% Im TOC wird Seitenzahl verlinkt(true),bzw. Text(false)
 			colorlinks=true,			% 'true' keinen Kasten um Link
-	%		citecolor=blue,
+			citecolor=THIblue,
 	%		pdfhighlight=/P,
 	%		bookmarks,
 	%		hyperfigures=true,

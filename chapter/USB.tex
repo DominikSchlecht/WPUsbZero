@@ -19,7 +19,7 @@ Dieser kurze Abschnitt gibt eine genauere, jedoch immer noch oberflächlich geha
 
 \newpage
 \section{Deskriptoren}\label{Deskriptoren}
-Der USB-Spezifikation, welche von dem USB Implementers Forum, Inc.\footnote{http://www.usb.org/about} festgelegt wird, sieht Felder vor, welche Informationen zu dem Gerät beinhalten.
+Der USB-Spezifikation, welche von dem USB Implementers Forum, Inc.\cite{USBAbout} festgelegt wird, sieht Felder vor, welche Informationen zu dem Gerät beinhalten.
 \begin{wrapfigure}{l}{0pt}%{0.5\textwidth}
 \begin{tikzpicture}[scale=1, text=THIblue]
 	\draw (0,0) rectangle (0.5,0.5);
@@ -86,7 +86,7 @@ Der USB-Spezifikation, welche von dem USB Implementers Forum, Inc.\footnote{http
 %\caption{USB-Felder}
 \end{wrapfigure}
 
-Dies umfasst die technische Informationen wie die Länge der gesamten Felder im \glqq bLength\grqq-Feld oder das Protokoll des Geräts im \glqq bDeviceProtocoll\grqq-Feld über Informationen für das Betriebssystem wie \glqq idVendor\grqq, \glqq idProduct\grqq, \glqq bDeviceSubClass\grqq und \glqq bDeviceClass\grqq. Diese Felder mit der jeweiligen Länge sind in der Grafik dargestellt. Ein Feld hat dabei zwischen ein und zwei Bytes. Die Felder \glqq bDeviceClass\grqq, \glqq bDeviceSubClass\grqq, \glqq bDeviceProtocol\grqq sowie \glqq idVendor\grqq werden vom Hersteller befüllt.\footnote{http://www.beyondlogic.org/usbnutshell/usb5.shtml} Das Betriebssystem nutzt die Felder meist um Treiber zu suchen oder auch das angeschlossene USB-Gerät gegen die Policie-Einstellungen zu prüfen. Um eigene Werte bei \textit{idProduct} oder \textit{idVendor}-Felder zu nutzten und damit sicher gestellt ist, dass nicht mehrere Hersteller die selbe \textit{idProduct} verwenden, müssen die Adressbereiche der \textit{idProduct} bei dem USB Implementers Forum, Inc. gekauft werden. Dazu gibt es zwei Möglichkeiten. Man kann entweder ein Mitglied der Forums werden oder für einen einmalig Betrag einen Adressraum erstehen, man darf dann jedoch nicht das offizielle USB-Logo verwenden. \footnote{http://www.usb.org/developers/vendor/} Im folgenden werden die für dieses Dokument interessanten Felder weiter erläutert:
+Dies umfasst die technische Informationen wie die Länge der gesamten Felder im \glqq bLength\grqq-Feld oder das Protokoll des Geräts im \glqq bDeviceProtocoll\grqq-Feld über Informationen für das Betriebssystem wie \glqq idVendor\grqq, \glqq idProduct\grqq, \glqq bDeviceSubClass\grqq und \glqq bDeviceClass\grqq. Diese Felder mit der jeweiligen Länge sind in der Grafik dargestellt. Ein Feld hat dabei zwischen ein und zwei Bytes. Die Felder \glqq bDeviceClass\grqq, \glqq bDeviceSubClass\grqq, \glqq bDeviceProtocol\grqq sowie \glqq idVendor\grqq werden vom Hersteller befüllt.\cite{USBDesk} Das Betriebssystem nutzt die Felder meist um Treiber zu suchen oder auch das angeschlossene USB-Gerät gegen die Policie-Einstellungen zu prüfen. Um eigene Werte bei \textit{idProduct} oder \textit{idVendor}-Felder zu nutzten und damit sicher gestellt ist, dass nicht mehrere Hersteller die selbe \textit{idProduct} verwenden, müssen die Adressbereiche der \textit{idProduct} bei dem USB Implementers Forum, Inc. gekauft werden. Dazu gibt es zwei Möglichkeiten. Man kann entweder ein Mitglied der Forums werden oder für einen einmalig Betrag einen Adressraum erstehen, man darf dann jedoch nicht das offizielle USB-Logo verwenden. \cite{USBVendor} Im folgenden werden die für dieses Dokument interessanten Felder weiter erläutert:
 
 %\begin{figure}[h]
 %	\setlength{\unitlength}{0.14in} % selecting unit length
