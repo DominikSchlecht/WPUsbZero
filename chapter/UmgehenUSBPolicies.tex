@@ -25,8 +25,8 @@ Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Grup
 \section{Teensy}
 Das Teensy ist ein Platine bestehend aus einem 72 MHz MK20DX256VLH7 Cortex-M4 Prozessor, 256 kbytes Flash Speicher und 64 kbytes RAM. Zudem verfügt es über eine USB-Schnittstelle. Man kann also ein Programm auf dem Teensy ablegen und dieses wird ausgeführt, wenn man den USB-Stick einsteckt. So kann man beliebige Signalfolgen über USB an ein anderes Gerät schicken.
 			
-\section{Concept}
-Da die USB-Felder nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind, sollte es möglich sein, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige \textit{idProduct}- und \textit{idVendor}-Werte emuliert. Beschränkt eine USB-Policie den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen.
+\section{Konzept}
+Da die USB-Felder nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind, sollte es möglich sein, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige \textit{idProduct}- und \textit{idVendor}-Werte emuliert. Beschränkt eine USB-Policy den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen.
 Um dies umzusetzen wurden verwendet:
 
 \begin{itemize}
@@ -54,3 +54,14 @@ Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \te
 Wie man den farblich hervorgehoben Stellen sehen kann, meldet sich der Teensy nun mit geänderten Deskriptoren.
 
 \section{Proof of Concept} \label{PoC}
+Die Policy der virtuelle Umgebung ist so eingestellt, dass nur ein  bestimmte Baureihe eines USB-Laufwerks an die virtuelle Umgebung durchgestellt wird.\\
+\\
+TODO Bild/Log\\
+\\
+Wird versucht ein Gerät mit abweichenden \textit{idVendor} und \textit{idProduct}-Werten zu verbinden, so wird diese abgelehnt und getrennt.\\
+\\
+TODO Bild/Log\\
+\\
+Werden die Deskriptoren des Teensies auf die des USB-Laufwerks geändert und angesteckt, so wird das Gerät durch gestellt.\\
+\\
+TODO Bild/Log
