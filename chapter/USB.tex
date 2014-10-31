@@ -20,71 +20,7 @@ Dieser kurze Abschnitt gibt eine genauere, jedoch immer noch oberflächlich geha
 \newpage
 \section{Deskriptoren}\label{Deskriptoren}
 Der USB-Spezifikation, welche von dem USB Implementers Forum, Inc.\cite{USBAbout} festgelegt wird, sieht Felder vor, welche Informationen zu dem Gerät beinhalten.
-\begin{wrapfigure}{l}{0pt}%{0.5\textwidth}
-\begin{tikzpicture}[scale=1, text=THIblue]
-	\draw (0,0) rectangle (0.5,0.5);
-	\draw (0.25, 0.25) node {1};
-	\draw (0.5, 0.25) node[right]{bLength};
-	
-	\draw (0,0.5) rectangle (0.5,0.5);
-	\draw (0.25, 0.75) node {1};
-	\draw (0.5, 0.75) node[right]{bDescriptorType};
-	
-	\draw (0,1) rectangle (0.5,1);
-	\draw (0.25,1.5) node {2};
-	\draw (0.5,1.5) node[right]{bcdUSB};
-	
-	\draw (0,2) rectangle (0.5,0.5);
-	\draw (0.25,2.25) node {1};
-	\draw (0.5,2.25) node[right]{bDeviceClass};
-
-	\draw (0,2.5) rectangle (0.5,0.5);
-	\draw (0.25,2.75) node {1};
-	\draw (0.5,2.75) node[right]{bDeviceSubClass};
-
-	\draw (0,3) rectangle (0.5,0.5);
-	\draw (0.25,3.25) node {1};
-	\draw (0.5,3.25) node[right]{bDeviceProtocol};
-
-	\draw (0,3.5) rectangle (0.5,0.5);
-	\draw (0.25,3.75) node {1};
-	\draw (0.5,3.75) node[right]{bMaxPacketSize};
-	
-	\draw (0,4) rectangle (0.5,1);
-	\draw (0.25,4.5) node {2};
-	\draw (0.5,4.5) node[right]{idVendor};
-	
-	\draw (0,5) rectangle (0.5,1);
-	\draw (0.25,5.5) node {2};
-	\draw (0.5,5.5) node[right]{idProduct};
-	
-	\draw (0,6) rectangle (0.5,1);
-	\draw (0.25,6.5) node {2};
-	\draw (0.5,6.5) node[right]{bcdDevice};
-	
-	\draw (0,7) rectangle (0.5,0.5);
-	\draw (0.25,7.25) node {1};
-	\draw (0.5,7.25) node[right]{iManufacturer};
-	
-	\draw (0,7.5) rectangle (0.5,0.5);
-	\draw (0.25,7.75) node {1};
-	\draw (0.5,7.75) node[right]{iProduct};
-	
-	\draw (0,8) rectangle (0.5,0.5);
-	\draw (0.25,8.25) node {1};
-	\draw (0.5,8.25) node[right]{iSerialNumber};
-	
-	
-	\draw (0,8.5) rectangle (0.5,0.5);
-	\draw (0.25,8.75) node {1};
-	\draw (0.5,8.75) node[right]{bNumConfigurations};
-	
-	\draw (0,9) rectangle (0.5,0.5);
-	
-	\draw (0.25, 9) node[rotate=90, right] {Bytes};
-\end{tikzpicture}
-%\caption{USB-Felder}
-\end{wrapfigure}
+\input{chapter/usbDeskriptoren}
 
 Dies umfasst die technische Informationen wie die Länge der gesamten Felder im \glqq bLength\grqq-Feld oder das Protokoll des Geräts im \glqq bDeviceProtocoll\grqq-Feld über Informationen für das Betriebssystem wie \glqq idVendor\grqq, \glqq idProduct\grqq, \glqq bDeviceSubClass\grqq und \glqq bDeviceClass\grqq. Diese Felder mit der jeweiligen Länge sind in der Grafik dargestellt. Ein Feld hat dabei zwischen ein und zwei Bytes. Die Felder \glqq bDeviceClass\grqq, \glqq bDeviceSubClass\grqq, \glqq bDeviceProtocol\grqq sowie \glqq idVendor\grqq werden vom Hersteller befüllt.\cite{USBDesk} Das Betriebssystem nutzt die Felder meist um Treiber zu suchen oder auch das angeschlossene USB-Gerät gegen die Policie-Einstellungen zu prüfen. Um eigene Werte bei \textit{idProduct} oder \textit{idVendor}-Felder zu nutzten und damit sicher gestellt ist, dass nicht mehrere Hersteller die selbe \textit{idProduct} verwenden, müssen die Adressbereiche der \textit{idProduct} bei dem USB Implementers Forum, Inc. gekauft werden. Dazu gibt es zwei Möglichkeiten. Man kann entweder ein Mitglied der Forums werden oder für einen einmalig Betrag einen Adressraum erstehen, man darf dann jedoch nicht das offizielle USB-Logo verwenden. \cite{USBVendor} Im folgenden werden die für dieses Dokument interessanten Felder weiter erläutert:
 

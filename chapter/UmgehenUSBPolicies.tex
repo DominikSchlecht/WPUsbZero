@@ -37,34 +37,6 @@ Um dies umzusetzen wurden verwendet:
 \end{itemize}
 
 Zur Analyse, mit welchen idVendor und idProduct-Werten sich der Teensy meldet, wurde mit dem Kommando \glqq tail -f /var/log/syslog\grqq das zentrale Logfile des Linuxsystems ausgelesen. Beim ersten einstecken ergab sich dabei folgende Meldung:
-\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
-\lstset{% general command to set parameter(s)
-	basicstyle=\tiny\ttfamily,%\small, % print whole listing small
-	keywordstyle=\color{THIblue}\bfseries\underbar,% underlined boldblack keywords
-	identifierstyle=, % nothing happens
-	commentstyle=\color{green}, % white comments
-	stringstyle=\color{red}\ttfamily, % typewriter type for strings
-	showstringspaces=false, % no special string spaces
-	%numbers=left,
-	%numberstyle=\color{gray},
-	%numbersep=5pt,
-	captionpos=b,
-	breaklines=true}
-	
-% Define Language
-\lstdefinelanguage{log}
-{
-  % list of keywords
-  morekeywords={
-    idVendor,
-    idProduct
-  },
-  sensitive=false, % keywords are not case-sensitive
-  %alsodigit={0482},
-  morecomment=[l]{//}, % l is for line comment
-  morecomment=[s]{/*}{*/}, % s is for start and end delimiter
-  morestring=[b]" % defines that strings are enclosed in double quotes
-}
 
 \lstset{language=log}
 \lstinputlisting[caption={tail -f syslog output},otherkeywords={=0482, 0482, =16c0, 16C0}]{documents/syslog.log}
