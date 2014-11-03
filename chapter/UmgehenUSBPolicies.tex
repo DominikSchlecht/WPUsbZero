@@ -1,7 +1,7 @@
 \chapter{Umgehung der USB-Policies}\label{Angriff}
 
-\section{Wie wird gefiltert}
-Die in diesem Dokument benutzten USB-Policies werden über die USB-Deskriptoren \ref{Deskriptoren} definiert. Wollten wir etwa ein Gerät mit $idProduct=0x01$ und $idVendor=0x02$ freigeben aber alle sonstigen Geräte abweisen, so wäre folgende Regel möglich:
+\section{Wie wird gefiltert?}
+Die in diesem Dokument benutzten USB-Policies werden über die USB-Deskriptoren \ref{Deskriptoren} definiert. Wollten wir etwa ein Gerät mit $idProduct=0x01$ und $idVendor=0x02$ freigeben, aber alle sonstigen Geräte abweisen, so wäre folgende Regel möglich:
 			\begin{itemize}
 				\item Verbiete alle USB-Geräte
 				\item Erlaube USB-Geräte mit
@@ -10,8 +10,8 @@ Die in diesem Dokument benutzten USB-Policies werden über die USB-Deskriptoren 
 					\item $idVendor=0x02$
 				\end{itemize}
 			\end{itemize}
-Die Regeln werden von oben nach unten gelesen, wobei spätere Regeln frühere überschreiben. Hier würden also zuerst alle USB-Geräte blockiert werden, außer das Gerät besitzt die $idProduct=0x01$ und $idVendor=0x02$. Dies scheint logisch, hat ein Gerät z.B. die $idProduct=0x03$, so tritt die \textit{Erlaube}-Regel nicht in Kraft und es bleibt die \textit{Verbiete}-Regel bestehen. Meldet sich ein Gerät mit $idProduct=0x01$ und $idVendor=0x02$ an, so gilt zwar auch zunächst die \textit{Verbiete}-Regel, jedoch trifft die \textit{Erlaube}-Regel zu und überschreibt die \textit{Verbiete}-Regel, sodass der Zugriff gewährt wird.
-Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Gruppe} erweitert werden. Dies ist vor allem nützlich, wenn man nur bestimmten Benutzern die Möglichkeit geben will, auf USB-Geräte zu zu greifen. Wollten wir z.B. dem Benutzer \glqq Alice\grqq den Zugriff auf ein USB-Gerät mit der $idProduct=0x01$ und der $idVendor=0x02$ geben, so wäre die Regel:
+Die Regeln werden von oben nach unten gelesen, wobei spätere Regeln frühere überschreiben. Hier würden also zuerst alle USB-Geräte blockiert, außer das Gerät besitzt die $idProduct=0x01$ und $idVendor=0x02$. Dies scheint logisch. Hat ein Gerät z.B. die $idProduct=0x03$, so tritt die \textit{Erlaube}-Regel nicht in Kraft und es bleibt die \textit{Verbiete}-Regel bestehen. Meldet sich ein Gerät mit $idProduct=0x01$ und $idVendor=0x02$ an, so gilt zwar auch zunächst die \textit{Verbiete}-Regel, jedoch trifft die \textit{Erlaube}-Regel zu und überschreibt die \textit{Verbiete}-Regel, sodass der Zugriff gewährt wird.
+Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Gruppe} erweitert werden. Dies ist vor allem nützlich, wenn man nur bestimmten Benutzern die Möglichkeit geben will, auf USB-Geräte zu zugreifen. Wollten wir z.B. dem Benutzer \glqq Alice\grqq den Zugriff auf ein USB-Gerät mit der $idProduct=0x01$ und der $idVendor=0x02$ geben, so wäre die Regel:
 			\begin{itemize}
 				\item Verbiete alle USB-Geräte
 				\item Ist $User=Alice$
@@ -23,7 +23,7 @@ Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Grup
 			\end{itemize}
 
 \section{Teensy}
-Das Teensy ist ein Platine bestehend aus einem 72 MHz MK20DX256VLH7 Cortex-M4 Prozessor, 256 kbytes Flash Speicher und 64 kbytes RAM. Zudem verfügt es über eine USB-Schnittstelle. Man kann also ein Programm auf dem Teensy ablegen und dieses wird ausgeführt, wenn man den USB-Stick einsteckt. So kann man beliebige Signalfolgen über USB an ein anderes Gerät schicken.
+Das Teensy ist eine Platine, bestehend aus einem 72 MHz MK20DX256VLH7 Cortex-M4 Prozessor, 256 kbytes Flash Speicher und 64 kbytes RAM. Zudem verfügt es über eine USB-Schnittstelle. Man kann also ein Programm auf dem Teensy ablegen und dieses wird ausgeführt, wenn man den USB-Stick einsteckt. So kann man beliebige Signalfolgen über USB an ein anderes Gerät schicken.
 			
 \section{Konzept}
 Da die USB-Felder nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind, sollte es möglich sein, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige \textit{idProduct}- und \textit{idVendor}-Werte emuliert. Beschränkt eine USB-Policy den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen.
@@ -41,7 +41,7 @@ Zur Analyse, mit welchen idVendor und idProduct-Werten sich der Teensy meldet, w
 \lstset{language=log}
 \lstinputlisting[caption={tail -f syslog output},otherkeywords={=0482, 0482, =16c0, 16C0}]{documents/syslog.log}
 
-Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \textit{idProduct} gleich \textit{0482} sind farblich hervorgehoben. Nun bearbeitet man unter \textit{arduino-1.0.5/hardware/teensy/cores/teensy3/} liegende \textit{usb-desc.h}, welche die notwendigen Informationen bei einer Neubeschreibung des Teensy bereit hält. Der relevante Abschnitt sowie die zu ändernden Werte sind wieder farblich hinterlegt.
+Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \textit{idProduct} gleich \textit{0482} sind farblich hervorgehoben. Nun bearbeitet man die unter \textit{arduino-1.0.5/hardware/teensy/cor-es/teensy3/} liegende \textit{usb-desc.h}, welche die notwendigen Informationen bei einer Neubeschreibung des Teensy bereit hält. Der relevante Abschnitt sowie die zu ändernden Werte sind wieder farblich hinterlegt.
 
 \lstset{language=C}
 \lstinputlisting[caption={Ausschnitt: usb\_desc.h},linerange={112-130},language=c]{documents/usb_desc.h}
@@ -54,14 +54,14 @@ Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \te
 Wie man den farblich hervorgehoben Stellen sehen kann, meldet sich der Teensy nun mit geänderten Deskriptoren.
 
 \section{Proof of Concept} \label{PoC}
-Die Policy der virtuelle Umgebung ist so eingestellt, dass nur ein  bestimmte Baureihe eines USB-Laufwerks an die virtuelle Umgebung durchgestellt wird.\\
+Die Policy der virtuellen Umgebung ist so eingestellt, dass nur eine  bestimmte Baureihe eines USB-Laufwerks an die virtuelle Umgebung durchgestellt wird.\\
 \\
 TODO Bild/Log\\
 \\
-Wird versucht ein Gerät mit abweichenden \textit{idVendor} und \textit{idProduct}-Werten zu verbinden, so wird diese abgelehnt und getrennt.\\
+Wird versucht, ein Gerät mit abweichenden \textit{idVendor} und \textit{idProduct}-Werten zu verbinden, so wird diese abgelehnt und getrennt.\\
 \\
 TODO Bild/Log\\
 \\
-Werden die Deskriptoren des Teensies auf die des USB-Laufwerks geändert und angesteckt, so wird das Gerät durch gestellt.\\
+Werden die Deskriptoren des Teensies auf die des USB-Laufwerks geändert und angesteckt, so wird das Gerät durchgestellt.\\
 \\
 TODO Bild/Log

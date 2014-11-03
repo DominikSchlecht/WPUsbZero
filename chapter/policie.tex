@@ -1,11 +1,11 @@
 \chapter{Policies} \label{Policies}
-Eine Policy ist ein Regelwerk, welches Rechte und Möglichkeiten von Benutzern auf einem IT-System beschreibt und eingrenzt. Es gibt verschiedene Arten Policies, im folgenden wir nur die Beschrieben, welche für den weiteren Verlauf der Arbeit relevant ist. Hier besteht eine Regel aus mehreren einzelnen Bestandteilen, welche entweder wahr oder falsch sind. Diese Bestandteile können per \textit{und}- oder \textit{oder}-Verknüpfungen zu einer Regel vereint werden.\\
-Abstrakt ist eine Police mit einem Regelwerk wie der Straßenverkehrsordnung zu vergleichen. Auch hier gibt es Vorgaben wer, wann und wo fahren oder parken darf. So wird zum Beispiel bei einem Durchfahrtsverbot, welches für Anlieger ausgeschlossen ist, folgende Regel festgelegt:
+Eine Policy ist ein Regelwerk, welches Rechte und Möglichkeiten von Benutzern auf einem IT-System beschreibt und eingrenzt. Es gibt verschiedene Arten von Policies. Im folgenden wird nur die beschrieben, welche für den weiteren Verlauf der Arbeit relevant ist. Hier besteht eine Regel aus mehreren einzelnen Bestandteilen, welche entweder wahr oder falsch sind. Diese Bestandteile können per \textit{und}- oder \textit{oder}-Verknüpfungen zu einer Regel vereint werden.\\
+Abstrakt ist eine Policy mit einem Regelwerk wie der Straßenverkehrsordnung zu vergleichen. Auch hier gibt es Vorgaben wer, wann und wo fahren oder parken darf. So wird zum Beispiel bei einem Durchfahrtsverbot, welches für Anlieger ausgeschlossen ist, folgende Regel festgelegt:
 \begin{description}
 	\item[Regel-1: ] Die Durchfahrt ist für alle verboten
-	\item[Regel-2: ] \textit{oder} der Fahrer ist Anlieger
+	\item[Regel-2: ] \textit{oder} der Fahrer ist Anlieger.
 \end{description}
-Bezeichnen wir in dem Beispiel den Ausgang \textit{der Fahrer darf durch die Straße fahren} als \textit{1} und den Ausgang \textit{der Fahrer darf nicht durch die Straße fahren} als \textit{0}, so wäre hier das Ergebnis
+Bezeichnen wir in dem Beispiel den Ausgang \textit{der Fahrer darf durch die Straße fahren} als \textit{1} und den Ausgang \textit{der Fahrer darf nicht durch die Straße fahren}, als \textit{0}, so wäre hier das Ergebnis
 \begin{equation*}
 	\alpha = Regel\text{-}1 \vee Regel\text{-}2
 \end{equation*} mit 
@@ -19,9 +19,9 @@ Bezeichnen wir in dem Beispiel den Ausgang \textit{der Fahrer darf durch die Str
 			1 & wenn Regel\text{-}1 gleich 1
 		\end{dcases*}
 \]
-Ähnliche Regeln können über Policies auf Rechner festgelegt werden. Hier wäre eine mögliche vergleichbare Regel im Bezug auf Speicherzugriffe
+. Ähnliche Regeln können über Policies auf Rechner festgelegt werden. Hier wäre eine mögliche vergleichbare Regel im Bezug auf Speicherzugriffe
 \begin{enumerate}
 	\item Der Zugriff auf diesen Ordner ist gesperrt
-	\item Außer der Benutzer hat die Kennung MaxMuster
+	\item außer der Benutzer hat die Kennung MaxMuster
 \end{enumerate}
-Solche Regeln werden jedoch nicht nur für die Organisation von Speicherzugriffen sondern auch für das Sperren bestimmter Einstellungen oder mancher Geräte verwendet.
+Solche Regeln werden jedoch nicht nur für die Organisation von Speicherzugriffen, sondern auch für das Sperren bestimmter Einstellungen oder mancher Geräte verwendet.

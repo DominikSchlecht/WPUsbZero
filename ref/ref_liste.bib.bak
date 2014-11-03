@@ -64,8 +64,7 @@
 }
 
 @MISC{HackKreditkarten2,
-  title = {AB Acquisition LLC Confirms Incident Involving Payment Card Data
-	Processing},
+  title = {Home Depot probes possible hack, could be larger than Target breach},
   lastchecked = {November 1, 2014},
   owner = {root},
   timestamp = {2014.11.01},
@@ -86,6 +85,14 @@
   owner = {root},
   timestamp = {2014.10.29},
   url = {http://csis.org/files/attachments/140609_McAfee_PDF.pdf}
+}
+
+@MISC{Metasploit,
+  title = {Metasploit},
+  lastchecked = {November 03, 2014},
+  owner = {root},
+  timestamp = {2014.11.03},
+  url = {http://www.metasploit.com/}
 }
 
 @MISC{Shellshock,

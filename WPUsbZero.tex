@@ -14,7 +14,7 @@
 % -----------------------------------------------------------------
 % -----------------------------------------------------------------
 
-\documentclass[a4paper,11pt,DIV=11,BROC=5mm,bigheadings,idxtotoc,cleardoubleempty,halfparskip,oneside,openright]{scrreprt} % 
+\documentclass[a4paper,11pt,DIV=11,twoside]{scrreprt} % 
 
 %Packages
 \input{configs/packages}
@@ -55,26 +55,28 @@
 			
 	\include{chapter/title_page}		
 
+	% Nummerierung
+	\pagenumbering{roman}
+	
 	\include{chapter/thanks_statement}
-		\cleardoublepage	
+		%\cleardoublepage	
 					
 			% Inhaltsverzeichnis
 			%\setcounter{\secnumdepth}{2} % Zwei Ebenen im Inhaltsverzeichnis auflisten
 			\tableofcontents
-				\cleardoublepage	
+				%\cleardoublepage	
 		
 			% Abkrzungsverzeichnis
-			\printnomenclature
-				\cleardoublepage	
+			%\printnomenclature
+				%\cleardoublepage	
 			
 %------------------------------------------------------------------------
 			% Neunummerierung des Hauptteils
 			\pagenumbering{arabic}
 			\setcounter{page}{1}            
-            \cleardoublepage
+            %\cleardoublepage
             
             \include{chapter/einleitung}
-                \cleardoublepage
                 
 			\include{chapter/szenario}
 
