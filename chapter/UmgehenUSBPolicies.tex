@@ -11,7 +11,7 @@ Die in diesem Dokument benutzten USB-Policies werden über die USB-Deskriptoren 
 				\end{itemize}
 			\end{itemize}
 Die Regeln werden von oben nach unten gelesen, wobei spätere Regeln frühere überschreiben. Hier würden also zuerst alle USB-Geräte blockiert, außer das Gerät besitzt die $idProduct=0x01$ und $idVendor=0x02$. Dies scheint logisch. Hat ein Gerät z.B. die $idProduct=0x03$, so tritt die \textit{Erlaube}-Regel nicht in Kraft und es bleibt die \textit{Verbiete}-Regel bestehen. Meldet sich ein Gerät mit $idProduct=0x01$ und $idVendor=0x02$ an, so gilt zwar auch zunächst die \textit{Verbiete}-Regel, jedoch trifft die \textit{Erlaube}-Regel zu und überschreibt die \textit{Verbiete}-Regel, sodass der Zugriff gewährt wird.
-Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Gruppe} erweitert werden. Dies ist vor allem nützlich, wenn man nur bestimmten Benutzern die Möglichkeit geben will, auf USB-Geräte zu zugreifen. Wollten wir z.B. dem Benutzer \glqq Alice\grqq den Zugriff auf ein USB-Gerät mit der $idProduct=0x01$ und der $idVendor=0x02$ geben, so wäre die Regel:
+Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Gruppe} erweitert werden. Dies ist vor allem nützlich, wenn man nur bestimmten Benutzern die Möglichkeit geben will, auf USB-Geräte zu zugreifen. Wollten wir z.B. dem Benutzer "`Alice"' den Zugriff auf ein USB-Gerät mit der $idProduct=0x01$ und der $idVendor=0x02$ geben, so wäre die Regel:
 			\begin{itemize}
 				\item Verbiete alle USB-Geräte
 				\item Ist $User=Alice$
@@ -36,7 +36,7 @@ Um dies umzusetzen wurden verwendet:
 	\item Kali-Linux als Testbetriebssystem (64bit)
 \end{itemize}
 
-Zur Analyse, mit welchen idVendor und idProduct-Werten sich der Teensy meldet, wurde mit dem Kommando \glqq tail -f /var/log/syslog\grqq das zentrale Logfile des Linuxsystems ausgelesen. Beim ersten einstecken ergab sich dabei folgende Meldung:
+Zur Analyse, mit welchen idVendor und idProduct-Werten sich der Teensy meldet, wurde mit dem Kommando \textit{"`tail -f /var/log/syslog"'} das zentrale Logfile des Linuxsystems ausgelesen. Beim ersten einstecken ergab sich dabei folgende Meldung:
 
 \lstset{language=log}
 \lstinputlisting[caption={tail -f syslog output},otherkeywords={=0482, 0482, =16c0, 16C0}]{documents/syslog.log}
@@ -46,7 +46,7 @@ Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \te
 \lstset{language=C}
 \lstinputlisting[caption={Ausschnitt: usb\_desc.h},linerange={112-130},language=c]{documents/usb_desc.h}
 
-Ändert man hier die markierten Werte und beschreibt den Teensy mittels der Arduino-Software neu, so werden diese Deskriptoren verwendet. Die Einstellungen hierfür können Sie aus der Grafik \ref{fig:EinstellungenArduino} im Anhang entnehmen. Das Programm ist dabei entbehrlich, hier wurde eine an den Teensy 3.1 angepasste Version des \textit{Blink}-Programms verwendet, welches im Anhang abgelegt ist. Kompiliert man das Programm nun und lädt es auf den Teensy, ergibt der \glqq tail -f /var/log/syslog\grqq -Befehl folgenden Output:
+Ändert man hier die markierten Werte und beschreibt den Teensy mittels der Arduino-Software neu, so werden diese Deskriptoren verwendet. Die Einstellungen hierfür können Sie aus der Grafik \ref{fig:EinstellungenArduino} im Anhang entnehmen. Das Programm ist dabei entbehrlich, hier wurde eine an den Teensy 3.1 angepasste Version des \textit{Blink}-Programms verwendet, welches im Anhang abgelegt ist. Kompiliert man das Programm nun und lädt es auf den Teensy, ergibt der \textit{"`tail -f /var/log/syslog"'}-Befehl folgenden Output:
 
 \lstset{language=log}
 \lstinputlisting[caption={tail -f syslog output 2}, otherkeywords={=beef, BEEF}]{documents/syslog_2.log}

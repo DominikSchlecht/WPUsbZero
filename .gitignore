@@ -10,3 +10,6 @@
 *.idx
 *.out
 *.pdf
+*.bib
+*.bcf
+*.run.xml
