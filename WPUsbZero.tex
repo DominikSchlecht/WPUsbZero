@@ -14,9 +14,10 @@
 % -----------------------------------------------------------------
 % -----------------------------------------------------------------
 
+% Dokumentenklasse
 \documentclass[a4paper,11pt,DIV=11,twoside]{scrreprt} % 
 
-%Packages
+% Packages
 \input{configs/packages}
 
 %%-------------Silbentrennung--------------------------------------
@@ -45,60 +46,28 @@
 	chapter/appendix
 }
 
-
-%------------------------------------------------------------------------
-
 %-----------------------------------------------------------------
 %---------------Dokumentenbeginn----------------------------------
 %-----------------------------------------------------------------
 \begin{document}
-			
-	\include{chapter/title_page}		
-
-	% Nummerierung
-	\pagenumbering{roman}
-	
+	\include{chapter/title_page}
+	\pagenumbering{roman} % Nummerierung
 	\include{chapter/thanks_statement}
-		%\cleardoublepage	
-					
-			% Inhaltsverzeichnis
-			%\setcounter{\secnumdepth}{2} % Zwei Ebenen im Inhaltsverzeichnis auflisten
-			\tableofcontents
-				%\cleardoublepage	
-		
-			% Abkrzungsverzeichnis
-			%\printnomenclature
-				%\cleardoublepage	
-			
-%------------------------------------------------------------------------
-			% Neunummerierung des Hauptteils
-			\pagenumbering{arabic}
-			\setcounter{page}{1}            
-            %\cleardoublepage
-            
-            \include{chapter/einleitung}
-                
-			\include{chapter/szenario}
-
-			\include{chapter/USB}
-			
-			\include{chapter/policie}
-
-			\include{chapter/UmgehenUSBPolicies}
-
-			\include{chapter/FazitGegenmassnahmen}
-	
-			
-%------------------------------------------------------------------------
-			
-			% Anhang
-			\include{chapter/appendix}
-			
-			% Literaturliste
-			\newpage
-			%\bibliographystyle{plaindin}	% DIN Norm für Literaturdarstellung
-			%\bibliography{ref/ref_liste}	% Pfad und Datei der Ref-Datenbank
-			\printbibliography
-		
-	\end{document}
+	\tableofcontents % Inhaltsverzeichnis
+%---------------Hauptteil-----------------------------------------
+	\pagenumbering{arabic} 	% Neunummerierung des Hauptteils
+	\setcounter{page}{0}	% Wieder bei 1 Anfangen
+	\include{chapter/einleitung}
+	\include{chapter/szenario}
+	\include{chapter/USB}
+	\include{chapter/policie}
+	\include{chapter/UmgehenUSBPolicies}
+	\include{chapter/FazitGegenmassnahmen}
+%---------------Anhang-------------------------------------------
+	\include{chapter/appendix} % Anhang
+	\newpage
+	\printbibliography % Literaturliste
+\end{document}
+%-----------------------------------------------------------------
+%---------------Dokumentenende------------------------------------
 %-----------------------------------------------------------------
