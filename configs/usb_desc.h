@@ -113,8 +113,8 @@ PID was 0483
   #define ENDPOINT4_CONFIG	ENDPOINT_TRANSIMIT_ONLY
 
 #elif defined(USB_HID)
-  #define VENDOR_ID		0xABCD //was 0x16C0
-  #define PRODUCT_ID		0xBEEF //was 0x0482
+  #define VENDOR_ID		0x16C0
+  #define PRODUCT_ID		0x0482
   #define MANUFACTURER_NAME	{'T','e','e','n','s','y','d','u','i','n','o'}
   #define MANUFACTURER_NAME_LEN	11
   #define PRODUCT_NAME		{'K','e','y','b','o','a','r','d','/','M','o','u','s','e','/','J','o','y','s','t','i','c','k'}
