@@ -1,0 +1,5 @@
+[...]
+07:00:43 VUSB: Redirected Device(0x0e8d,01887,0x08,0x02,0x50)
+07:00:43 USB: Found new device "WYSE VUSB" on port 2
+07:00:44 CTX USB: redirected device 5 (PID: 0x1887, VID 0x0e8d)
+[...]

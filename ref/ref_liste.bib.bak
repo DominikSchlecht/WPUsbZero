@@ -111,6 +111,14 @@
   timestamp = {2014.11.03}
 }
 
+@ONLINE{Poodle,
+  title = {Poodle},
+  url = {https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566},
+  urldate = {2014-11-08},
+  owner = {root},
+  timestamp = {2014.11.08}
+}
+
 @ONLINE{Shellshock,
   title = {Shellshock},
   url = {https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6271},

@@ -53,9 +53,12 @@ Dies umfasst die technische Informationen, wie die Länge der gesamten Felder im
 %	\label{fig:lnlblock}
 %	% label to refer figure in text
 %\end{figure}			
-$ $\\\\
+$ $\\\\\\
 \begin{description}
 	\item[idVendor: ] Das \textit{idVendor}-Feld wird von der USB Implementers Forum, Inc. festgelegt. Das Feld ist 2 Byte lang und ein Wert ist genau einem Hersteller zugeordnet. Ersteht ein Unternehmen einen \textit{idVendor}-Wert, kann er, solange er diesen \textit{idVendor}-Wert nutzt, frei über das \textit{idProduct}-Feld verfügen.
+	
 	\item[idProduct: ] Das \textit{idProduct}-Feld wird von einem Unternehmen vergeben, welches einen Wert im idVendor-Feld gekauft hat. Es ist ebenfalls 2 Bytes lang. Damit könnte ein Unternehmen bis zu $2^{16}$ verschiedene Produkte beschreiben.
+	
+	\item[bInterfaceClass \& bInterfaceSubClass \& bInterfaceProtocol: ] Diese Felder sind in der oberen Aufstellung nicht enthalten, da diese nicht über das Device, sondern über das \textit{USB-Interface} auskunft geben. Sie beschreiben die Klasse, sowie die Unterklasse und das Protokoll, über welches mit dem Interface kommuniziert werden soll.
 	
 \end{description}

@@ -338,9 +338,9 @@ static uint8_t config_descriptor[CONFIG_DESC_SIZE] = {
         CDC_STATUS_INTERFACE,			// bInterfaceNumber
         0,                                      // bAlternateSetting
         1,                                      // bNumEndpoints
-        0x08,                                   // bInterfaceClass was 2
-        0x02,                                   // bInterfaceSubClass was 2
-        0x50,                                   // bInterfaceProtocol was 1
+        0x08,                                   // bInterfaceClass, war 2
+        0x02,                                   // bInterfaceSubClass, war 2
+        0x50,                                   // bInterfaceProtocol, war 1
         5,                                      // iInterface was 0
         // CDC Header Functional Descriptor, CDC Spec 5.2.3.1, Table 26
         5,                                      // bFunctionLength

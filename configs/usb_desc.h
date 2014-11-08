@@ -85,12 +85,11 @@ PID was 0483
 
 
 #if defined(USB_SERIAL)
-  #define VENDOR_ID		    0x0e8d  //0x152d
-  #define PRODUCT_ID		0x1887  //0x2339  
-  //#define DEVICE_CLASS		2	// 2 = Communication Class
-  #define DEVICE_CLASS		0x08    //new
-  #define DEVICE_SUBCLASS	0x02    //new
-  #define DEVICE_PROTOCOL	0x50    //new
+  #define VENDOR_ID		0x0e8d  	//0x152d
+  #define PRODUCT_ID		0x1887  	//0x2339  
+  #define DEVICE_CLASS		0x00    	//war 2
+  #define DEVICE_SUBCLASS	0x00    	//Neu Eingefuegt
+  #define DEVICE_PROTOCOL	0x00    	//Neu Eingefuegt
   #define MANUFACTURER_NAME	{'T','e','e','n','s','y','d','u','i','n','o'}
   #define MANUFACTURER_NAME_LEN	11
   #define PRODUCT_NAME		{'U','S','B',' ','S','e','r','i','a','l'}
