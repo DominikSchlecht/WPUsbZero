@@ -1,0 +1,11 @@
+[...]
+Nov  8 15:05:03 kali dbus[2582]: [system] Failed to activate service 'org.freedesktop.Avahi': timed out
+Nov  8 15:05:17 kali kernel: [11746.713963] usb 1-1: new full-speed USB device number 15 using xhci_hcd
+Nov  8 15:05:17 kali kernel: [11746.842959] usb 1-1: New USB device found, idVendor=0e8d, idProduct=1887
+Nov  8 15:05:17 kali kernel: [11746.842968] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+Nov  8 15:05:17 kali kernel: [11746.842973] usb 1-1: Product: USB Serial
+Nov  8 15:05:17 kali kernel: [11746.842976] usb 1-1: Manufacturer: Teensyduino
+Nov  8 15:05:17 kali kernel: [11746.842980] usb 1-1: SerialNumber: 413450
+Nov  8 15:05:17 kali kernel: [11746.843679] usb-storage 1-1:1.0: USB Mass Storage device detected
+Nov  8 15:05:17 kali kernel: [11746.844125] usb-storage: probe of 1-1:1.0 failed with error -5
+[...]
