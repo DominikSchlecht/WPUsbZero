@@ -1,0 +1,13 @@
+[...]
+Nov  8 14:26:50 kali kernel: [ 9438.405774] usb 1-2: new full-speed USB device number 11 using xhci_hcd
+Nov  8 14:26:50 kali kernel: [ 9438.534904] usb 1-2: New USB device found, idVendor=16c0, idProduct=0483
+Nov  8 14:26:50 kali kernel: [ 9438.534913] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+Nov  8 14:26:50 kali kernel: [ 9438.534918] usb 1-2: Product: USB Serial
+Nov  8 14:26:50 kali kernel: [ 9438.534922] usb 1-2: Manufacturer: Teensyduino
+Nov  8 14:26:50 kali kernel: [ 9438.534925] usb 1-2: SerialNumber: 413450
+Nov  8 14:26:50 kali kernel: [ 9438.535640] cdc_acm 1-2:1.0: This device cannot do calls on its own. It is not a modem.
+Nov  8 14:26:50 kali kernel: [ 9438.535680] cdc_acm 1-2:1.0: ttyACM0: USB ACM device
+Nov  8 14:26:50 kali mtp-probe: checking bus 1, device 11: "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-2"
+Nov  8 14:26:50 kali mtp-probe: bus: 1, device: 11 was not an MTP device
+Nov  8 14:26:56 kali kernel: [ 9444.328208] usb 1-2: USB disconnect, device number 11
+[...]
