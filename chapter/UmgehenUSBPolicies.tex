@@ -55,7 +55,7 @@ Nun bearbeitet man die unter \textit{arduino-1.0.5/hardware/teensy/cor-es/teensy
 \lstinputlisting[caption={Ausschnitt: usb\_desc.c, Zeile 334 bis 344},linerange={334-344},otherkeywords={bInterfaceClass, bInterfaceSubClass, bInterfaceProtocol}]{configs/usb_desc.c}
 
 
-Ändert man hier die markierten Werte und beschreibt den Teensy mittels der Arduino-Software neu, so werden diese Deskriptoren verwendet. Die Einstellungen hierfür können Sie aus der Grafik \ref{fig:EinstellungenArduino} im Anhang entnehmen. Das Programm ist dabei entbehrlich, hier wurde eine an den Teensy 3.1 angepasste Version des \textit{Blink}-Programms verwendet, welches im Anhang abgelegt ist. Kompiliert man das Programm nun und lädt es auf den Teensy, ergibt der \textit{"`tail -f /var/log/syslog"'}-Befehl folgenden Output
+Ändert man hier die markierten Werte und beschreibt den Teensy mittels der Arduino-Software neu, so werden diese Deskriptoren verwendet. Die Einstellungen hierfür können aus der Grafik \ref{fig:EinstellungenArduino} im Anhang entnommen werden. Das Programm ist dabei entbehrlich, hier wurde eine an den Teensy 3.1 angepasste Version des \textit{Blink}-Programms verwendet, welches im Anhang abgelegt ist. Kompiliert man das Programm nun und lädt es auf den Teensy, ergibt der \textit{"`tail -f /var/log/syslog"'}-Befehl folgenden Output
 
 \lstset{language=log}
 \lstinputlisting[caption={tail -f syslog output 2}, otherkeywords={}]{configs/syslog_after.log}
