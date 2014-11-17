@@ -1,7 +1,7 @@
 \chapter{Szenario}
 Bei einer Prüfung interner Regularien bei der Informationssicherheit wurde das Thema USB-Geräte in Verbindung mit Thin oder auch sogenannten Zero-Clients aufgegriffen. Hier soll aus gegebenen fachlichen Anlässen eine Möglichkeit geschaffen werden, lokale USB-Geräte, wie z.B. USB-Sticks oder USB-CD-Laufwerke an die virtuelle Maschine des Benutzers weiter zu leiten. In dieser Arbeit galt es, das Risiko zu prüfen und entsprechende Gegenmaßnahmen zu entwickeln.
-Würde man das Durchstellen von USB-Geräten im Allgemeinen erlauben, so würden sich erhebliche Gefahren ergeben, welche unter \ref{GefBeiUSB} erläutert werden. Um dem vorzubeugen, soll auf Basis einer Policy, welche in \ref{Policies} weiter erläutert wird, das Durchstellen auf bestimmte Geräte begrenzt werden. Dies geschieht bei dem hier getesteten Produkt über die Filterung nach USB-Deskriptoren wie \textit{idVendor} und \textit{idProduct}, welche ein USB-Device, z.B. einen bestimmten USB-Stick oder ein USB-CD-Laufwerk, eindeutig identifizieren sollen. Diese Felder werden unter \ref{Deskriptoren} weiter erläutert.
-Bei der durchgeführten Sicherheitsprüfung stellte sich jedoch heraus, dass USB-Deskriptoren keinen Sicherungen unterliegen und somit mit Hilfe bestimmter Geräte gezielt emuliert werden können. Diese Umgehung der Policy soll in diesem Dokument erläutert und aufgezeigt werden. Den Proof-Of-Concept finden Sie unter \ref{PoC}.
+Würde man das Durchstellen von USB-Geräten im Allgemeinen erlauben, so würden sich erhebliche Gefahren ergeben, welche unter \ref{GefBeiUSB} erläutert werden. Um dem vorzubeugen, soll auf Basis einer Richtlinie, welche in \ref{Policies} weiter erläutert wird, das Durchstellen auf bestimmte Geräte begrenzt werden. Dies geschieht bei dem hier getesteten Produkt über die Filterung nach USB-Deskriptoren wie \textit{idVendor} und \textit{idProduct}, welche ein USB-Device, z.B. einen bestimmten USB-Stick oder ein USB-CD-Laufwerk, eindeutig identifizieren sollen. Diese Felder werden unter \ref{Deskriptoren} weiter erläutert.
+Bei der durchgeführten Sicherheitsprüfung stellte sich jedoch heraus, dass USB-Deskriptoren keinen Sicherungen unterliegen und somit mit Hilfe bestimmter Geräte gezielt emuliert werden können. Diese Umgehung der Policy soll in diesem Dokument erläutert und aufgezeigt werden. Der Proof-Of-Concept findet sich unter \ref{PoC}.
 
 \input{chapter/ablaufGrafik}
 
@@ -9,8 +9,8 @@ Bei der durchgeführten Sicherheitsprüfung stellte sich jedoch heraus, dass USB
 	\item[Schritt 1: ] Ein USB-Gerät wird angesteckt.
 	\item[Schritt 2: ] Der USB-Treiber des Thinclients bindet das Gerät ein.
 	\item[Schritt 3: ] Der Thinclient leitet entsprechende Deskriptor-Felder oder das gesamte USB-Gerät an den Hypervisor weiter. 
-	\item[Schritt 4: ] Der Hypervisor prüft die Deskriptor-Felder gegen die Hypervisor-Policy. Diese erlaubt entweder das Durchstellen oder verbietet es. Wird die Durchstellung verboten, wird der USB-Stick nicht an die Hypervisor-Umgebung weitergeleitet und damit würde der Ablauf enden. Im Folgenden wird angenommen, dass der USB-Stick weitergeleitet wird.
+	\item[Schritt 4: ] Der Hypervisor prüft die Deskriptor-Felder gegen die Hypervisor-Richtlinie. Diese erlaubt entweder das Durchstellen oder verbietet es. Wird die Durchstellung verboten, wird der USB-Stick nicht an die Hypervisor-Umgebung weitergeleitet und damit würde der Ablauf enden. Im Folgenden wird angenommen, dass der USB-Stick weitergeleitet wird.
 	\item[Schritt 5\&6: ] Der Hypervisor fordert den USB-Stick beim Thinclient an und bindet diesen ein.
-	\item[Schritt 7: ] Der Hypervisor gibt das USB-Device an die VM weiter.
-	\item[Schritt 8: ] Die VM prüft das USB-Device anhand der Deskriptor-Felder gegen die VM-Policy und bindet diesen entweder ein oder lehnt diesen ab.
+	\item[Schritt 7: ] Der Hypervisor gibt das USB-Device an die virtuelle Maschine (VM) weiter.
+	\item[Schritt 8: ] Die VM prüft das USB-Device anhand der Deskriptor-Felder gegen die VM-Richtline und bindet diesen entweder ein oder lehnt diesen ab.
 \end{description}

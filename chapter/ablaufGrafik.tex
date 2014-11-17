@@ -1,4 +1,5 @@
 \begin{figure}[htbp]
+\centering
 \begin{tikzpicture}[
 	scale=1,
 	line width=0.25mm,
@@ -36,11 +37,11 @@
 
 	\node[comp] (hypervisor) [above of=thinclient] {Hypervisor};
 	\node[driver] (hypervisorUSB) [below right of=hypervisor] {USB-Treiber};
-	\node[policie] (hypervisorPol) [above right of=hypervisor] {Policie};
+	\node[policie] (hypervisorPol) [above right of=hypervisor] {Policy};
 	
 	\node[comp] (VM) [above of=hypervisor] {VM};
 	\node[driver] (VMUSB) [below right of=VM] {USB-Treiber};
-	\node[policie] (VMPol) [above right of=VM] {Policie};
+	\node[policie] (VMPol) [above right of=VM] {Policy};
 		
 	\draw[->]
 		(USBDevice) --

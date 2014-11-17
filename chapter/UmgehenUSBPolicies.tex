@@ -1,4 +1,4 @@
-\chapter{Umgehung der USB-Policies}\label{Angriff}
+\chapter{Umgehung der USB-Richtlinie}\label{Angriff}
 
 \section{Wie wird gefiltert?}
 Die in diesem Dokument benutzten USB-Policies werden über die USB-Deskriptoren \ref{Deskriptoren} definiert. Wollten wir etwa ein Gerät mit $idProduct=0x01$ und $idVendor=0x02$ freigeben, aber alle sonstigen Geräte abweisen, so wäre folgende Regel möglich:
@@ -41,7 +41,7 @@ Zur Analyse, mit welchen idVendor und idProduct-Werten sich der Teensy meldet, w
 \lstset{language=log}
 \lstinputlisting[caption={tail -f syslog output},otherkeywords={=0483, 0483, =16c0, 16C0}]{configs/syslog.log}
 
-Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \textit{idProduct} gleich \textit{0483} sind farblich hervorgehoben. Die \textit{bInterface}-Felder sind jedoch aus dem \textit{syslog} nicht erkenntlich. Hierzu wird der \textit{lsusb}-Befehl verwendet. Der Outsieht wie folgt aus:
+Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \textit{idProduct} gleich \textit{0483} sind farblich hervorgehoben. Die \textit{bInterface}-Felder sind jedoch aus dem \textit{syslog} nicht erkenntlich. Hierzu wird der \textit{lsusb}-Befehl verwendet. Die Ausgabe sieht wie folgt aus:
 
 \lstinputlisting[caption={lsusb -v -d16c0:0483},linerange={0-36},otherkeywords={}]{configs/lsusb_teensyBefore}
 
