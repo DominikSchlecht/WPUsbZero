@@ -1,19 +1,19 @@
 \chapter{Umgehung der USB-Richtlinie}\label{Angriff}
 
 \section{Wie wird gefiltert?}
-Die in diesem Dokument benutzten USB-Policies werden über die USB-Deskriptoren \ref{Deskriptoren} definiert. Wollten wir etwa ein Gerät mit $idProduct=0x01$ und $idVendor=0x02$ freigeben, aber alle sonstigen Geräte abweisen, so wäre folgende Regel möglich:
+Die in diesem Dokument benutzten USB-Policies werden über die in Abschnitt \ref{Deskriptoren} beschriebenen USB-Deskriptoren definiert. Wollten wir etwa ein Gerät mit $idProduct=0x01$ und $idVendor=0x02$ freigeben, aber alle sonstigen Geräte abweisen, so wäre folgende Regel möglich:
 			\begin{itemize}
-				\item Verbiete alle USB-Geräte
+				\item Verbiete alle USB-Geräte \textit{oder}
 				\item Erlaube USB-Geräte mit
 				\begin{itemize}
-					\item $idProduct=0x01$
+					\item $idProduct=0x01$ \textit{und}
 					\item $idVendor=0x02$
 				\end{itemize}
 			\end{itemize}
 Die Regeln werden von oben nach unten gelesen, wobei spätere Regeln frühere überschreiben. Hier würden also zuerst alle USB-Geräte blockiert, außer das Gerät besitzt die $idProduct=0x01$ und $idVendor=0x02$. Dies scheint logisch. Hat ein Gerät z.B. die $idProduct=0x03$, so tritt die \textit{Erlaube}-Regel nicht in Kraft und es bleibt die \textit{Verbiete}-Regel bestehen. Meldet sich ein Gerät mit $idProduct=0x01$ und $idVendor=0x02$ an, so gilt zwar auch zunächst die \textit{Verbiete}-Regel, jedoch trifft die \textit{Erlaube}-Regel zu und überschreibt die \textit{Verbiete}-Regel, sodass der Zugriff gewährt wird.
-Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Gruppe} erweitert werden. Dies ist vor allem nützlich, wenn man nur bestimmten Benutzern die Möglichkeit geben will, auf USB-Geräte zu zugreifen. Wollten wir z.B. dem Benutzer "`Alice"' den Zugriff auf ein USB-Gerät mit der $idProduct=0x01$ und der $idVendor=0x02$ geben, so wäre die Regel:
+Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Gruppe} erweitert werden. Dies ist vor allem nützlich, wenn man nur bestimmten Benutzern die Möglichkeit geben will, USB-Geräte zu nutzen. Wollten wir z.B. dem Benutzer "`Alice"' den Zugriff auf ein USB-Gerät mit der $idProduct=0x01$ und der $idVendor=0x02$ geben, so wäre die Regel:
 			\begin{itemize}
-				\item Verbiete alle USB-Geräte
+				\item Verbiete alle USB-Geräte \textit{oder}
 				\item Ist $User=Alice$
 				\item Erlaube USB-Geräte mit
 				\begin{itemize}
@@ -23,25 +23,25 @@ Diese Zugriffe können gegebenenfalls noch um eine \textit{Active-Directory-Grup
 			\end{itemize}
 
 \section{Teensy}
-Das Teensy ist eine Platine, bestehend aus einem 72 MHz MK20DX256VLH7 Cortex-M4 Prozessor, 256 kbytes Flash Speicher und 64 kbytes RAM. Zudem verfügt es über eine USB-Schnittstelle. Man kann also ein Programm auf dem Teensy ablegen und dieses wird ausgeführt, wenn man den USB-Stick einsteckt. So kann man beliebige Signalfolgen über USB an ein anderes Gerät schicken.
+Das Teensy ist eine Platine, bestehend aus einem 72 MHz MK20DX256VLH7 Cortex-M4 Prozessor, 256 kbytes Flash Speicher und 64 kbytes RAM. Zudem verfügt es über eine USB-Schnittstelle. Man kann also ein Programm auf dem Teensy ablegen, das ausgeführt wird, wenn man den USB-Stick einsteckt. So kann man beliebige Signalfolgen über die USB-Schnittstelle an ein anderes Gerät schicken.
 			
 \section{Konzept}
-Da die USB-Felder nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind, sollte es möglich sein, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige \textit{idProduct}- und \textit{idVendor}-Werte emuliert. Beschränkt eine USB-Policy den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen.
-Um dies umzusetzen wurden verwendet:
+Die USB-Felder sind allgemein nicht durch Signaturen oder sonstige Möglichkeiten vor Manipulation geschützt sind. Es soll untersucht werden, ob es möglich ist, einen Teensy so zu programmieren, dass er sich als ein beliebiges Gerät ausgibt, also beliebige \textit{idProduct}- und \textit{idVendor}-Werte emuliert. Beschränkt eine USB-Policy den Zugriff auf ein bestimmtes Gerät, so könnte man dieses theoretisch mit dem Teensy nachahmen.
+Um dies zu untersuchen, wurden verwendet:
 
 \begin{itemize}
 	\item Teensy 3.1 + USB-Kabel
-	\item Arduino 1.0.5 (64bit) installiert unter \textit{$\sim$/teensy/arduino-1.0.5}
-	\item Teensyduino 1.19 (64bit)
+	\item Die Entwicklungsumgebung Arduino 1.0.5 (64bit) installiert unter \textit{$\sim$/teensy/arduino-1.0.5}
+	\item Die Erweiterung Teensyduino 1.19 (64bit)
 	\item Kali-Linux als Testbetriebssystem (64bit)
 \end{itemize}
 
-Zur Analyse, mit welchen idVendor und idProduct-Werten sich der Teensy meldet, wurde mit dem Kommando \textit{"`tail -f /var/log/syslog"'} das zentrale Logfile des Linuxsystems ausgelesen. Beim ersten einstecken ergab sich dabei folgende Meldung:
+Zur Analyse, mit welchen idVendor und idProduct-Werten sich der Teensy meldet, wurde mit dem Kommando \textit{"`tail -f /var/log/syslog"'} das zentrale Logfile des Linuxsystems ausgelesen. Beim ersten Einstecken ergab sich dabei folgende Meldung:
 
 \lstset{language=log}
 \lstinputlisting[caption={tail -f syslog output},otherkeywords={=0483, 0483, =16c0, 16C0}]{configs/syslog.log}
 
-Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \textit{idProduct} gleich \textit{0483} sind farblich hervorgehoben. Die \textit{bInterface}-Felder sind jedoch aus dem \textit{syslog} nicht erkenntlich. Hierzu wird der \textit{lsusb}-Befehl verwendet. Die Ausgabe sieht wie folgt aus:
+Die wichtigen Werte, also die \textit{idVendor} gleich \textit{16c0} und die \textit{idProduct} gleich \textit{0483} sind farblich hervorgehoben und unterstrichen. Die \textit{bInterface}-Felder sind jedoch aus dem \textit{syslog} nicht erkenntlich. Hierzu wird der \textit{lsusb}-Befehl verwendet. Die Ausgabe sieht wie folgt aus:
 
 \lstinputlisting[caption={lsusb -v -d16c0:0483},linerange={0-36},otherkeywords={}]{configs/lsusb_teensyBefore}
 
@@ -49,7 +49,7 @@ Der \textit{lsusb}-Befehl zeigt hier bei dem Gerät, als welches sich der Teensy
 
 \lstinputlisting[caption={lsusb -v -0e8d:1887},linerange={0-36},otherkeywords={}]{configs/lsusb_cd}
 
-Nun bearbeitet man die unter \textit{arduino-1.0.5/hardware/teensy/cor-es/teensy3/} liegende \textit{usb\_desc.h} sowie die \textit{usb\_desc.c}, welche die notwendigen Informationen bei einer Neubeschreibung des Teensy bereit halten. Die relevanten Abschnitt sowie die zu ändernden Werte sind wieder farblich hinterlegt.
+Nun bearbeitet man die unter \textit{arduino-1.0.5/hardware/teensy/cor-es/teensy3/} liegende \textit{usb\_desc.h} sowie die \textit{usb\_desc.c}, welche die notwendigen Informationen bei einer Neubeschreibung des Teensy bereit halten. Die relevanten Abschnitt sowie die zu ändernden Werte sind wieder farblich hinterlegt und unterstrichen.
 
 \lstinputlisting[caption={Ausschnitt: usb\_desc.h, Zeile 87 bis 100},linerange={87-100},otherkeywords={VENDOR_ID, PRODUCT_ID, DEVICE_CLASS, DEVICE_SUBCLASS, DEVICE_PROTOCOL}]{configs/usb_desc.h}
 \lstinputlisting[caption={Ausschnitt: usb\_desc.c, Zeile 334 bis 344},linerange={334-344},otherkeywords={bInterfaceClass, bInterfaceSubClass, bInterfaceProtocol}]{configs/usb_desc.c}
@@ -62,7 +62,7 @@ Nun bearbeitet man die unter \textit{arduino-1.0.5/hardware/teensy/cor-es/teensy
 und \textit{lsusb} meldet:
 \lstinputlisting[caption={lsusb -v -0e8d:1887}, otherkeywords={},linerange={0-36}]{configs/lsusb_teensyAfter_2}
 
-Wie man den farblich hervorgehoben Stellen sehen kann, meldet sich der Teensy nun mit geänderten Deskriptoren. Das \textit{iManufacturer}-Feld wird bei der Filterung der Policy nicht genutzt und wurde daher zu veranschaulichungszwecken nicht geändert.
+Wie man den hervorgehobenen Stellen sehen kann, meldet sich der Teensy nun mit geänderten Deskriptoren. Das \textit{iManufacturer}-Feld wird bei der Filterung der Policy nicht genutzt und wurde daher zu veranschaulichungszwecken nicht geändert.
 
 \section{Proof of Concept} \label{PoC}
 Die Policy der virtuellen Umgebung ist so eingestellt, dass nur eine  bestimmte Baureihe eines USB-Laufwerks an die virtuelle Umgebung durchgestellt wird.
@@ -72,7 +72,7 @@ Die Policy der virtuellen Umgebung ist so eingestellt, dass nur eine  bestimmte 
 
 Wird versucht, ein Gerät mit abweichenden Deskriptor-Werten zu verbinden, so wird diese nicht durchgestellt.
 
-\lstinputlisting[caption={Standart Teensy}, otherkeywords={}]{configs/vm_log_before}
+\lstinputlisting[caption={Standard Teensy}, otherkeywords={}]{configs/vm_log_before}
 
 Werden die Deskriptoren des Teensies auf die des USB-Laufwerks geändert und angesteckt, so wird das Gerät durchgestellt.
 
