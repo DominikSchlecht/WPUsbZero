@@ -13,3 +13,6 @@
 *.bib
 *.bcf
 *.run.xml
+*.vrb
+*.nav
+*.snm
