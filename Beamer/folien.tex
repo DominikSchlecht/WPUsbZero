@@ -14,8 +14,10 @@
 \title{Umgehen von USB-Deskriptor basierten USB-Richtlinien}
 \subtitle{am Beispiel einer Virtual Desktop Infrastrukture Umgebung}
 \date{\today}
-\author{Dominik Gunther Florian Schlecht}
+\author{Dominik Schlecht}
 \institute[THI]{Technische Hochschule Ingolstadt}
+
+\input{../configs/listingsConf}
 
 
 \useoutertheme{infolines}
@@ -65,10 +67,8 @@
 	
 	\section{Problem- und Fragestellung}
 	\begin{frame}{\secname}
-		Einige Mitarbeiter im Backoffice brauchen eine Möglichkeit, CDs zu lesen. 
-		\pause		
+		Einige Mitarbeiter im Backoffice brauchen eine Möglichkeit, CDs zu lesen.	
 		Da diese an Thin-Clients arbeiten, ist dies derzeit nicht gegeben.
-		\pause
 		\begin{figure}[htbp]
 			\centering
 			\includegraphics[width=0.375\textwidth]{bilder/thinclient.jpg}
@@ -87,15 +87,67 @@
 		$ $\newline
 		Kritische Frage:
 		\begin{itemize}
-			\item Kann anhand der Richtline sichergestellt werden, dass keine anderen Geräte durchgestellt werden?
+			\item Kann anhand der Richtlinie sichergestellt werden, dass keine anderen Geräte durch gestellt werden?
 		\end{itemize}
 	\end{frame}
+	
+	\begin{frame}{\secname}
+		\input{bilder/ablaufGrafik}
+	\end{frame}
+	
+	\begin{frame}{\secname}
+		\lstset{language=tikz}
+
+		\begin{columns}[t,onlytextwidth]		
+		
+		\column{0.5\textwidth}
+		\lstinputlisting[linerange={0-21}]{../chapter/ablaufGrafik}
+		
+		\column{0.5\textwidth}
+		\lstinputlisting[linerange={22-32}]{../chapter/ablaufGrafik}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}{\secname}
+		\lstset{language=tikz}
+		\lstinputlisting[linerange={33-45}]{../chapter/ablaufGrafik}
+	\end{frame}
+	
+	\begin{frame}{\secname}
+		\lstset{language=tikz}
+		
+		\lstinputlisting[linerange={46-65}]{../chapter/ablaufGrafik}
+	\end{frame}
+	
+	\begin{frame}{\secname}
+		\lstset{language=tikz}
+		
+		\lstinputlisting[linerange={45-70}]{../chapter/ablaufGrafik}
+	\end{frame}
+	
+	\begin{frame}{\secname}
+		\lstset{language=tikz}
+		
+		\lstinputlisting[linerange={71-90}]{../chapter/ablaufGrafik}
+	\end{frame}	
 	
 	\section{USB-Deskriptoren}
 	\begin{frame}{\secname}
 		Jedes USB-Gerät übergibt beim Einstecken bestimmte Deskriptorfelder:
 		\input{bilder/usbDeskriptoren}
 	\end{frame}
+	
+	\begin{frame}{\secname}
+		\lstset{language=tikz}
+
+		\lstinputlisting[linerange={0-25}]{../chapter/usbDeskriptoren}
+	\end{frame}	
+	
+	\begin{frame}{\secname}
+		\lstset{language=tikz}
+
+		\lstinputlisting[linerange={26-40}]{../chapter/usbDeskriptoren}
+	\end{frame}		
 	
 	\section{USB-Richtlinien am Hypervisor}
 	\begin{frame}{\secname}
@@ -108,7 +160,7 @@
 				\begin{itemize}
 					\item Das Gerät besitzt \textit{idProduct=0x01} \textit{UND}
 					\item Das Gerät besitzt \textit{idVendor=0x02} \textit{DANN}
-					\item Stelle das Gerät zur Virtuellen Machine durch		
+					\item Stelle das Gerät zur Virtuellen Maschine durch		
 				\end{itemize}
 			\end{itemize}						
 			

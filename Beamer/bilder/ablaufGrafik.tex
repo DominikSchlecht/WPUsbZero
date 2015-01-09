@@ -1,0 +1,89 @@
+\begin{figure}[htbp]
+\centering
+\scalebox{.6}{
+\begin{tikzpicture}[
+	scale=1,
+	line width=0.25mm,
+	every node/.style={
+		scale=1, 
+		text=THIblue},
+	align=center,
+	node distance=4cm,
+	comp/.style={
+		fill=white,
+		rectangle,
+		draw,
+		minimum size=2.5cm},
+	driver/.style={
+		fill=white,
+		rectangle,
+		draw,
+		yshift=2cm,
+		xshift=-1cm},
+	device/.style={
+		fill=white,
+		rectangle,
+		draw},
+	policie/.style={
+		fill=white,
+		rectangle,
+		draw,
+		yshift=-2cm,
+		xshift=-1.5cm}
+	]
+	
+	\node[comp] (thinclient) at (0,0){Thinclient};
+	\node[driver] (thinclientUSB) [below right of=thinclient] {USB-Treiber};
+	\node[device] (USBDevice) [right of=thinclientUSB, xshift=-1cm] {USB-Device};
+
+	\node[comp] (hypervisor) [above of=thinclient] {Hypervisor};
+	\node[driver] (hypervisorUSB) [below right of=hypervisor] {USB-Treiber};
+	\node[policie] (hypervisorPol) [above right of=hypervisor] {Policy};
+	
+	\node[comp] (VM) [above of=hypervisor] {VM};
+	\node[driver] (VMUSB) [below right of=VM] {USB-Treiber};
+	\node[policie] (VMPol) [above right of=VM] {Policy};
+		
+\draw[->]
+	(USBDevice) --
+		node[above]{1.}
+			(thinclientUSB);	
+	
+\draw[<->]
+	(thinclientUSB) -- 
+		node[right]{2.}
+			++(0,-1) -| (USBDevice);
+	
+\draw[->]
+	(thinclient.125) -- 
+		node[left]{3.}
+			(hypervisor.235);
+	
+\draw[<->]
+	(hypervisor.10) -- 
+		node[above]{4.}
+			++(2.5,0) |- (hypervisorPol);
+	
+\draw[->]
+	(hypervisor.270) -- 
+		node[left]{5.}
+			(thinclient.90);
+				
+\draw[->]
+	(thinclient.55) -- 
+		node[left]{6.}
+			++(0,1.25)-|(hypervisorUSB);
+	
+\draw[->]
+	(hypervisor) --
+		node[left]{7.}
+			++(0,2.5)-|(VMUSB);
+	
+\draw[<->]
+	(VM.10) --
+		node[above]{8.}
+			++(2.5,0) |- (VMPol);
+	
+\end{tikzpicture}
+}
+\end{figure}
