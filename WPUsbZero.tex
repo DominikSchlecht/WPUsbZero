@@ -9,7 +9,7 @@
 % V2 07.07.2012		Dr. Paul Spannaus
 % V3 10.03.2013		Dr. Paul Spannaus
 % V4 28.01.2014		Dr. Paul Spannaus
-% V5 31.10.2014 	Dominik Schlecht
+% V5 31.10.2014 		Dominik Schlecht
 % 	
 % -----------------------------------------------------------------
 % -----------------------------------------------------------------
@@ -23,27 +23,21 @@
 %%-------------Silbentrennung--------------------------------------
 \hyphenation{}
 
-%Nomenklatur
-% z.B. (1)  \nomenclature{$v_0$}{Startgeschwindigkeit}   -> Formelverzeichnis
-\nomenclature[A]{USB}{Universal Serial Bus}
-
 %%-------------Index-----------------------------------------------
 \makeindex
-\makenomenclature
 
 %------------------------------------------------------------------
 % Angabe der zu verwendenden Dateien, sodass nur z.B. das aktuelle 
 % Dokument compiliert wird; den Rest mit % auskommentieren
 \includeonly{
-	chapter/title_page,
-	%chapter/thanks_statement,
+    chapter/title_page,
     chapter/einleitung,
     chapter/szenario,
     chapter/USB,
     chapter/policie,
     chapter/UmgehenUSBPolicies,
     chapter/FazitGegenmassnahmen,
-	chapter/appendix
+    chapter/appendix
 }
 
 %-----------------------------------------------------------------
